@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int RC_SIGN_IN = 1;
 
     @BindView(R.id.sign_in_button)
-    Button mButton;
+    SignInButton mButton;
     GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Log.d(TAG, "No loged in user found");
             // setup google signIn
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.server_client_id))
                     .requestEmail()
                     .build();
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -96,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             GoogleSignInAccount account = result.getSignInAccount();
             firebaseAuthWithGoogle(account);
         } else {
-            Log.d(TAG, "sign in result failed");
+            Log.d(TAG, "sign in result failed : " + result.isSuccess());
         }
     }
 
@@ -118,6 +119,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
     }
 
+    /*
+    *this will be called by button click and takes google api client input builts intent for signin
+    * initiate activity for result
+     */
     @Override
     public void onClick(View v) {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -126,6 +131,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG, "on connectionfailed triggerd , please check connectivity issue");
+        Log.d(TAG, "on connectionfailed triggerd , please check this issue : " + connectionResult.getErrorMessage());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthStateListener != null) {
+            mAuth.removeAuthStateListener(mAuthStateListener);
+        }
     }
 }

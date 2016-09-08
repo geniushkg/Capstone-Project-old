@@ -2,4 +2,5 @@
     <string name="app_name">BetterSleep</string>
     <string name="app_name_login">BetterSleep : Monitor you sleep health </string>
     <string name="google_signin">SignIn</string>
+    <string name="server_client_id">1043801972654-r29jojkv1annnpvsl5bov3ldr0ubm7ve.apps.googleusercontent.com</string>
 </resources>
