@@ -16,17 +16,22 @@
         android:textSize="@dimen/appname_font_size"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/button"
+        android:layout_above="@id/sign_in_button"
         android:layout_marginBottom="@dimen/appname_margin"/>
-
+<!--
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_google_signin_light_normal_hdpi"
         android:text="@string/google_signin"
         />
+        -->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
