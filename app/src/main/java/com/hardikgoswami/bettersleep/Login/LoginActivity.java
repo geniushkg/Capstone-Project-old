@@ -27,13 +27,15 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this,Dashboard.class));
         } else {
             Log.d(TAG, "No loged in user found");
-            startActivityForResult(AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setProviders(AuthUI.GOOGLE_PROVIDER)
-                    .build(),RC_SIGN_IN);
+           // startActivityForResult(AuthUI.getInstance()
+//                    .createSignInIntentBuilder()
+//                    .setProviders(AuthUI.GOOGLE_PROVIDER)
+//                    .build(),RC_SIGN_IN);
 
         }
     }
+
+    
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
