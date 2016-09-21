@@ -1,4 +1,4 @@
-package com.hardikgoswami.bettersleep.SleepPunch;
+package com.hardikgoswami.bettersleep.yognidra;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.hardikgoswami.bettersleep.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepPunchFragment extends Fragment {
+public class yognidra_frag extends Fragment {
 
 
-    public SleepPunchFragment() {
+    public yognidra_frag() {
         // Required empty public constructor
     }
 
@@ -24,9 +24,7 @@ public class SleepPunchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =inflater.inflate(R.layout.sleeppunch_frag, container, false);
-
-        return rootView;
+        return inflater.inflate(R.layout.yognidra_frag, container, false);
     }
 
 }

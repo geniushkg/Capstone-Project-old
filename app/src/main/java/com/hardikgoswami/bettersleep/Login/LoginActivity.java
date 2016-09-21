@@ -2,10 +2,9 @@ package com.hardikgoswami.bettersleep.Login;
 
 
 import android.content.Intent;
-import android.os.Handler;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -43,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_act);
         ButterKnife.bind(this);
         mButton.setOnClickListener(this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -128,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     /*
     *This method just helps to navigate to dashboard on sign in success
      */
-    void navigateToDashboard(){
+    void navigateToDashboard() {
         Intent intent = new Intent(LoginActivity.this, Dashboard.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
