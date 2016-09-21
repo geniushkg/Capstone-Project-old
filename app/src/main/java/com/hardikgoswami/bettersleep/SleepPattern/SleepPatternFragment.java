@@ -12,14 +12,17 @@ import com.hardikgoswami.bettersleep.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepPattern extends Fragment {
+public class SleepPatternFragment extends Fragment {
 
 
-    public SleepPattern() {
+    public SleepPatternFragment() {
         // Required empty public constructor
     }
 
-
+    public static SleepPatternFragment newInstance(){
+        SleepPatternFragment sleepPatternFragment = new SleepPatternFragment();
+        return sleepPatternFragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

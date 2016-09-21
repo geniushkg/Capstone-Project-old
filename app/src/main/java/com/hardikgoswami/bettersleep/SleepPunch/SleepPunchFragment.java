@@ -18,7 +18,10 @@ public class SleepPunchFragment extends Fragment {
     public SleepPunchFragment() {
         // Required empty public constructor
     }
-
+    public static SleepPunchFragment newInstance () {
+        SleepPunchFragment sleepPunchFragment = new SleepPunchFragment();
+        return sleepPunchFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

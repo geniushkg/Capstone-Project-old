@@ -19,6 +19,10 @@ public class YognidraFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static YognidraFragment newInstance (){
+        YognidraFragment yognidraFragment = new YognidraFragment();
+        return yognidraFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
