@@ -13,26 +13,36 @@ import com.hardikgoswami.bettersleep.Yognidra.YognidraFragment;
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 3;
+
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                return SleepPunchFragment.newInstance();
+                return SleepPunchFragment.newInstance(0, "Page # 1");
             case 1:
-                return YognidraFragment.newInstance();
+                return YognidraFragment.newInstance(1, "Page # 2");
             case 2:
-                return SleepPatternFragment.newInstance();
+                return SleepPatternFragment.newInstance(2, "Page # 3");
             default:
-                return  null;
+                return null;
         }
     }
 
     @Override
     public int getCount() {
         return NUM_ITEMS;
+
     }
+
+    // Returns the page title for the top indicator
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return "Page : " + position;
+    }
+
+
 }

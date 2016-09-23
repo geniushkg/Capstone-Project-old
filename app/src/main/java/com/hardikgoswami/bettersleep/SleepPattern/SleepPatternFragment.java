@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hardikgoswami.bettersleep.R;
 
@@ -19,15 +20,34 @@ public class SleepPatternFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static SleepPatternFragment newInstance(){
+    private String title;
+    private int page;
+
+    public static SleepPatternFragment newInstance(int page , String title){
         SleepPatternFragment sleepPatternFragment = new SleepPatternFragment();
+        Bundle args = new Bundle();
+        args.putInt("someInt", page);
+        args.putString("someTitle", title);
+        sleepPatternFragment.setArguments(args);
         return sleepPatternFragment;
     }
+
+    // Store instance variables based on arguments passed
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        page = getArguments().getInt("someInt", 0);
+        title = getArguments().getString("someTitle");
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.sleeppatter_frag, container, false);
+        View rootView =inflater.inflate(R.layout.sleeppatter_frag, container, false);
+        TextView tvLabel = (TextView) rootView.findViewById(R.id.tvSampleText);
+        tvLabel.setText(page + " -- " + title);
+        return rootView;
     }
 
 }
