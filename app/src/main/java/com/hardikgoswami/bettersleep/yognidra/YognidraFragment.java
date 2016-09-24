@@ -54,13 +54,11 @@ public class YognidraFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.yognidra_frag, container, false);
+
         // setup youtube
         YouTubePlayerSupportFragment youTubePlayerSupportFragment = YouTubePlayerSupportFragment.newInstance();
-
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.add(R.id.youtube_layout, youTubePlayerSupportFragment).commit();
-
-
         youTubePlayerSupportFragment.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
@@ -78,7 +76,6 @@ public class YognidraFragment extends Fragment {
                 Log.d("youtube error : ", errorMessage);
             }
         });
-
 
         return rootView;
     }
