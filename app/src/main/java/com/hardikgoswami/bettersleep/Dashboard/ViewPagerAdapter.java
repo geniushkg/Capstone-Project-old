@@ -38,11 +38,23 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     }
 
-    // Returns the page title for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Page : " + position;
+         super.getPageTitle(position);
+        String PageHeader = "Tab Heading";
+        switch (position){
+            case 0:
+                PageHeader = "PunchIn";
+                break;
+            case 1:
+                PageHeader = "Yognidra";
+                break;
+            case 2:
+                PageHeader = "Pattern";
+                break;
+            default:
+                break;
+        }
+        return PageHeader;
     }
-
-
 }

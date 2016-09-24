@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.hardikgoswami.bettersleep.R;
 
 public class Dashboard extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class Dashboard extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        pagerSlidingTabStrip.setViewPager(viewPager);
         Log.d(TAG, "Dashboard activity");
 
     }
