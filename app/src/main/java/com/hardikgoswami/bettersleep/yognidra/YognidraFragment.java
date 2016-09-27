@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.hardikgoswami.bettersleep.BuildConfig;
 import com.hardikgoswami.bettersleep.R;
 
 /**
@@ -28,7 +29,7 @@ public class YognidraFragment extends Fragment {
 
     private String title;
     private int page;
-    private static final String API_KEY = "AIzaSyDOb-g_CBP0oo1T-0EpFprYaNYMHbsWWDs";
+    private static final String API_KEY = BuildConfig.YOUTUBE_API;
     private static final String VIDEO_ID = "Mkx88_3cD-s";
 
     public static YognidraFragment newInstance(int page, String title) {
@@ -76,8 +77,6 @@ public class YognidraFragment extends Fragment {
                 Log.d("youtube error : ", errorMessage);
             }
         });
-
         return rootView;
     }
-
 }
