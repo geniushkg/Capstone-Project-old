@@ -54,8 +54,7 @@ public class YognidraFragment extends Fragment {
                 "1) Stick to a schedule - try to go to bed every day same time.<br />\n" +
                 "2) Avoid Caffeine, Alcohol, Nicotine, and Other Chemicals that Interfere with Sleep<br />\n" +
                 "3) Create Bedtime ritual like , listen to yoga Nidra every day or light reading of a book or some literature.<br />\n" +
-                "4) Don&rsquo;t Be a Nighttime Clock-Watcher <br />\n" +
-                "This will increase anxiety and stress<br />\n" +
+                "4) Don&rsquo;t Be a Nighttime Clock-Watcher, This will increase anxiety and stress<br />\n" +
                 "5) Be comfortable in environment you can make it dark , quite ,etc <br />\n" +
                 "6) Light food and long walk helps everyday</p>";
     }
