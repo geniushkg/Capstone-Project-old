@@ -13,8 +13,9 @@ import com.hardikgoswami.bettersleep.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepPunchFragment extends Fragment {
+public class SleepPunchFragment extends Fragment implements SleepPunchContract.View {
 
+    SleepPunchContract.Presenter mSleepPresent;
 
     public SleepPunchFragment() {
         // Required empty public constructor
@@ -22,7 +23,8 @@ public class SleepPunchFragment extends Fragment {
 
     private String title;
     private int page;
-    public static SleepPunchFragment newInstance (int page , String title) {
+
+    public static SleepPunchFragment newInstance(int page, String title) {
         SleepPunchFragment sleepPunchFragment = new SleepPunchFragment();
         Bundle args = new Bundle();
         args.putInt("someInt", page);
@@ -43,10 +45,29 @@ public class SleepPunchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =inflater.inflate(R.layout.sleeppunch_frag, container, false);
+        View rootView = inflater.inflate(R.layout.sleeppunch_frag, container, false);
 
 
         return rootView;
     }
 
+    @Override
+    public void showSleepDebtData() {
+
+    }
+
+    @Override
+    public void showSleepDebtHelpDialog() {
+
+    }
+
+    @Override
+    public void showPunchInDialog() {
+
+    }
+
+    @Override
+    public void setPresenter(SleepPunchContract.Presenter presenter) {
+        mSleepPresent = presenter;
+    }
 }
