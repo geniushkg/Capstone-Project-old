@@ -11,4 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:visibility="visible" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sleep_hints"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
 </LinearLayout>

@@ -44,8 +44,7 @@ public class SleepPunchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.sleeppunch_frag, container, false);
-        TextView tvLabel = (TextView) rootView.findViewById(R.id.tvSampleText);
-        tvLabel.setText(page + " -- " + title);
+
 
         return rootView;
     }
