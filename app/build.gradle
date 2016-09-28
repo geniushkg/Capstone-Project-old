@@ -12,8 +12,8 @@ android {
         versionName "1.0"
     }
     buildTypes {
-        all{
-            buildConfigField 'String' , 'YOUTUBE_API', YOUTUBE_API
+        all {
+            buildConfigField 'String', 'YOUTUBE_API', YOUTUBE_API
         }
         release {
             minifyEnabled false
@@ -34,5 +34,6 @@ dependencies {
     compile 'com.android.support:design:23.0.0'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile files('libs/ProviGen-lib-2.0.1.jar')
 }
 apply plugin: 'com.google.gms.google-services'

@@ -16,6 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard.Dashboard"></activity>
+        <provider
+            android:name="com.hardikgoswami.bettersleep.Data.Source.Local.BSContentProvider"
+            android:authorities="com.hardikgoswami.bettersleep" >
+        </provider>
     </application>
 
 </manifest>
