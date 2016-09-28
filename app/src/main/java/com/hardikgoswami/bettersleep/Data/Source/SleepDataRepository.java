@@ -1,11 +1,13 @@
 package com.hardikgoswami.bettersleep.Data.Source;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.hardikgoswami.bettersleep.Data.Source.Local.BSContentProvider;
+import com.hardikgoswami.bettersleep.Data.Source.Local.SleepDebtContract;
 import com.hardikgoswami.bettersleep.Data.Source.Local.SleepHistoryContract;
 
 import java.text.SimpleDateFormat;
@@ -32,10 +34,35 @@ public class SleepDataRepository {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SleepHistoryContract.INT_HOURS,hours);
         contentValues.put(SleepHistoryContract.STRING_DATE,date);
+        // insert data
+        mContext.getContentResolver().insert(SleepHistoryContract.CONTENT_URI,contentValues);
 
-        Uri uri = mContext.getContentResolver().insert(
-                SleepHistoryContract.CONTENT_URI, contentValues);
-        // TODO: remove this toast only for debug purpose
-        Toast.makeText(mContext,"text is : "+uri.toString(),Toast.LENGTH_SHORT).toString();
+    }
+
+
+    public void modifyDebt(int hours,boolean positive){
+        int currentDebt = 0;
+        ContentResolver resolver = mContext.getContentResolver();
+        String[] projection = new String[]{SleepDebtContract.INT_DEBT_HOURS};
+        Cursor cursor =
+                resolver.query(SleepDebtContract.CONTENT_URI,
+                        projection,
+                        null,
+                        null,
+                        null);
+        if (cursor.moveToFirst()) {
+            do {
+                currentDebt = cursor.getInt(0);
+                // do something meaningful
+            } while (cursor.moveToNext());
+        }
+        if (positive){
+            currentDebt = currentDebt + hours;
+        }else {
+            currentDebt = currentDebt - hours;
+        }
+        ContentValues cv = new ContentValues();
+        cv.put(SleepDebtContract.INT_DEBT_HOURS,currentDebt);
+        mContext.getContentResolver().insert(SleepDebtContract.CONTENT_URI,cv);
     }
 }
