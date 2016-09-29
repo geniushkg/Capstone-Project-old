@@ -13,7 +13,7 @@ import com.hardikgoswami.bettersleep.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepPatternFragment extends Fragment {
+public class SleepPatternFragment extends Fragment implements SleepPatternContract.View {
 
 
     public SleepPatternFragment() {
@@ -23,7 +23,7 @@ public class SleepPatternFragment extends Fragment {
     private String title;
     private int page;
 
-    public static SleepPatternFragment newInstance(int page , String title){
+    public static SleepPatternFragment newInstance(int page, String title) {
         SleepPatternFragment sleepPatternFragment = new SleepPatternFragment();
         Bundle args = new Bundle();
         args.putInt("someInt", page);
@@ -44,9 +44,18 @@ public class SleepPatternFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =inflater.inflate(R.layout.sleeppatter_frag, container, false);
+        View rootView = inflater.inflate(R.layout.sleeppatter_frag, container, false);
 
         return rootView;
     }
 
+    @Override
+    public void showSleepData() {
+
+    }
+
+    @Override
+    public void setPresenter(SleepPatternContract.Presenter presenter) {
+
+    }
 }

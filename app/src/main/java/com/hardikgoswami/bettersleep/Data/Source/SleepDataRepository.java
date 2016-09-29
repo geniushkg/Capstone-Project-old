@@ -23,7 +23,7 @@ public class SleepDataRepository {
         this.mContext = mContext;
     }
 
-    public  void addHours(int hours){
+    public void addHours(int hours) {
         // TODO: save hours and get current date and store it to db
 
 
@@ -32,15 +32,15 @@ public class SleepDataRepository {
         String date = sdf.format(new Date());
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SleepHistoryContract.INT_HOURS,hours);
-        contentValues.put(SleepHistoryContract.STRING_DATE,date);
+        contentValues.put(SleepHistoryContract.INT_HOURS, hours);
+        contentValues.put(SleepHistoryContract.STRING_DATE, date);
         // insert data
-        mContext.getContentResolver().insert(SleepHistoryContract.CONTENT_URI,contentValues);
+        mContext.getContentResolver().insert(SleepHistoryContract.CONTENT_URI, contentValues);
 
     }
 
 
-    public void modifyDebt(int hours,boolean positive){
+    public void modifyDebt(int hours, boolean positive) {
         int currentDebt = 0;
         ContentResolver resolver = mContext.getContentResolver();
         String[] projection = new String[]{SleepDebtContract.INT_DEBT_HOURS};
@@ -56,13 +56,13 @@ public class SleepDataRepository {
                 // do something meaningful
             } while (cursor.moveToNext());
         }
-        if (positive){
+        if (positive) {
             currentDebt = currentDebt + hours;
-        }else {
+        } else {
             currentDebt = currentDebt - hours;
         }
         ContentValues cv = new ContentValues();
-        cv.put(SleepDebtContract.INT_DEBT_HOURS,currentDebt);
-        mContext.getContentResolver().insert(SleepDebtContract.CONTENT_URI,cv);
+        cv.put(SleepDebtContract.INT_DEBT_HOURS, currentDebt);
+        mContext.getContentResolver().insert(SleepDebtContract.CONTENT_URI, cv);
     }
 }

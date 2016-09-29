@@ -11,7 +11,7 @@ import com.tjeannin.provigen.ProviGenProvider;
  */
 public class BSContentProvider extends ProviGenProvider {
 
-    private static Class[] contracts = new Class[]{SleepHistoryContract.class,SleepDebtContract.class};
+    private static Class[] contracts = new Class[]{SleepHistoryContract.class, SleepDebtContract.class};
 
     @Override
     public SQLiteOpenHelper openHelper(Context context) {

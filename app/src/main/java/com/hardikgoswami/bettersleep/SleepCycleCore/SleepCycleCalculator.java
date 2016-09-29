@@ -18,7 +18,7 @@ public class SleepCycleCalculator {
     /**
      * returns list of alarm times to wake up based on current time calculated sleep cycles
      */
-    public static List<Time> getAlarmTimeList(){
+    public static List<Time> getAlarmTimeList() {
         List<Time> sleepCycleList = new ArrayList<Time>();
         // TODO : add current time variable then calculate list of 5 upcoming sleepcycle and return as list.
 

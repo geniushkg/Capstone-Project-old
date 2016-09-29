@@ -19,9 +19,10 @@ public class Dashboard extends AppCompatActivity {
     public static final String TAG = "BETTERSLEEP";
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
-    LoaderManager  loaderManager;
+    LoaderManager loaderManager;
     SleepDataRepository dataRepository;
     SleepPunchContract.Presenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
         dataRepository = new SleepDataRepository(this);
         // TODO: Setup Presenter for sleeppunch
 
-        
+
     }
 
 

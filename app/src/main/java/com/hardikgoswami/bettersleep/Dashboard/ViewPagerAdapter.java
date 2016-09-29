@@ -40,9 +40,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-         super.getPageTitle(position);
+        super.getPageTitle(position);
         String PageHeader = "Tab Heading";
-        switch (position){
+        switch (position) {
             case 0:
                 PageHeader = "PunchIn";
                 break;

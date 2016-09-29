@@ -9,9 +9,9 @@ import android.support.v4.view.ViewPager;
 public class ActivityUtils {
     /**
      * @param pageNumber pagenumber of fragment to which we need to swipe
-     * @param viewPager Viewpager in which operation will be performed
-     * */
-    public static void swipeViewPagerTo(int pageNumber , ViewPager viewPager){
+     * @param viewPager  Viewpager in which operation will be performed
+     */
+    public static void swipeViewPagerTo(int pageNumber, ViewPager viewPager) {
         viewPager.setCurrentItem(pageNumber);
     }
 }

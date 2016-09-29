@@ -3,12 +3,13 @@ package com.hardikgoswami.bettersleep.SleepPunch;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
+
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 
 /**
  * Created by geniushkg on 9/28/2016.
  */
-public class SleepPunchPresenter implements SleepPunchContract.Presenter ,LoaderManager.LoaderCallbacks {
+public class SleepPunchPresenter implements SleepPunchContract.Presenter, LoaderManager.LoaderCallbacks {
     LoaderManager loaderManager;
     SleepDataRepository dataRepository;
     SleepPunchContract.View mView;
