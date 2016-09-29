@@ -1,6 +1,7 @@
 package com.hardikgoswami.bettersleep.Dashboard;
 
 import android.os.Handler;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,13 +10,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 import com.hardikgoswami.bettersleep.R;
+import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchContract;
+import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
 
 public class Dashboard extends AppCompatActivity {
     public static final String TAG = "BETTERSLEEP";
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
-
+    LoaderManager  loaderManager;
+    SleepDataRepository dataRepository;
+    SleepPunchContract.Presenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +35,13 @@ public class Dashboard extends AppCompatActivity {
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
         Log.d(TAG, "Dashboard activity");
+        // setup loadermanager
+        loaderManager = getSupportLoaderManager();
+        // setup SleepData Repository
+        dataRepository = new SleepDataRepository(this);
+        // TODO: Setup Presenter for sleeppunch
 
+        
     }
 
 
