@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hardikgoswami.bettersleep.R;
 
@@ -22,7 +21,7 @@ public class SleepPatternFragment extends Fragment implements SleepPatternContra
 
     private String title;
     private int page;
-
+    SleepPatternContract.Presenter presenter;
     public static SleepPatternFragment newInstance(int page, String title) {
         SleepPatternFragment sleepPatternFragment = new SleepPatternFragment();
         Bundle args = new Bundle();
@@ -44,7 +43,7 @@ public class SleepPatternFragment extends Fragment implements SleepPatternContra
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.sleeppatter_frag, container, false);
+        View rootView = inflater.inflate(R.layout.sleeppattern_frag, container, false);
 
         return rootView;
     }
@@ -56,6 +55,6 @@ public class SleepPatternFragment extends Fragment implements SleepPatternContra
 
     @Override
     public void setPresenter(SleepPatternContract.Presenter presenter) {
-
+    this.presenter = presenter;
     }
 }

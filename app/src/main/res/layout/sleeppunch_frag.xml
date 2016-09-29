@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment">
+    tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment"
+    android:tag="@string/sleep_punch_tag">
 
 
 </FrameLayout>

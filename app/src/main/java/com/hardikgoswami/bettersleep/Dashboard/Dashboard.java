@@ -15,7 +15,7 @@ import com.hardikgoswami.bettersleep.R;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchContract;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     public static final String TAG = "BETTERSLEEP";
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
@@ -33,6 +33,7 @@ public class Dashboard extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOnPageChangeListener(this);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
         Log.d(TAG, "Dashboard activity");
@@ -65,4 +66,18 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        Toast.makeText(this,"pos is :"+position,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }
