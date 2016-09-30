@@ -42,8 +42,6 @@ public class Dashboard extends AppCompatActivity implements ViewPager.OnPageChan
         // setup SleepData Repository
         dataRepository = new SleepDataRepository(this);
         // TODO: Setup Presenter for sleeppunch
-
-
     }
 
 

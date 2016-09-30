@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="D:\Capstone-Project\app\libs\ProviGen-lib-2.0.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="6130059a946e844d8520b16f6bb0e8a7673da046">
+        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\ProviGen-lib-2.0.1_c1b09d164df58164b567e65d5328e7f2ca363b6f.jar" />
+    </item>
+
+</items>
