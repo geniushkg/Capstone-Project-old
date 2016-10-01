@@ -3,84 +3,57 @@
 
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="4b630471536351be7c3c3100735c75b7ad2cbd84">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-9.4.0_f672a8e2292ca03a9e9818ab7e4e5d03fdfe0c12.jar" />
+        sha1="3b7173b3df4c7029699919414400041f64519e34">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-9.4.0_f320d7fcce3518d4e7f00db23f9ab5233fb31abd.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.0.0_329870a9057d12f18547fbcb86de4578f6703991.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.4.0_a7119d43f20c0337eec1f0e2994da21d8e706c53.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-9.4.0_faec9982845e2f61b64ad032e59d1d05a3de45f4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\geniushkg\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.1.0\support-annotations-24.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="8a23146e1a8c7cb4758e3d3f62449213f1e51f67">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\support-annotations-24.1.0_a35e93002d9310028fdbb0cc89299ef9e2fe02b5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\design\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.0.0_a8de039f06c36e99c563cd93d52ffd75c25a1681.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="88848548ab56d4fbf3d2d1b0c85bf1ff9b4c1f4b">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-9.4.0_06c417c8bbaa822a03182a20009280d4562beede.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-9.4.0_3138904d98a4aba2785558c5bcb19cb3ce8457df.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="a440fb3fec30ff925e9f601cc458fb6671834cb2">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-9.4.0_350391e9db4a33f0a3be858204789f24a445dbcb.jar" />
+        sha1="7912610ed96381c25c36d986eba422731b9641b6">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.astuetz-pagerslidingtabstrip-1.0.1_00f3e6a7b6717141968a03aec85b2c74836c85a6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\libs\ProviGen-lib-2.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-9.4.0_cb0e13cc0b4d1e144263e6947d6651573cd1aecd.jar" />
+        sha1="6130059a946e844d8520b16f6bb0e8a7673da046">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\ProviGen-lib-2.0.1_bf53428d322e6fcb10863a9242938e3ea295d9db.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="18b5697c65c4fe5b7381613b8b8ae9ac52e26fa7">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-9.4.0_13a8a9b3cbc6fe3ac51ce9e2ec152a72a1550b47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\libs\YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\YouTubeAndroidPlayerApi_72085ee866fb4a16d629fa14ba810c0930d520e2.jar" />
     </item>
     <item
         is-multidex="false"
@@ -89,115 +62,142 @@
         optimize="true"
         revision="23.0.3"
         sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_5cde020ee9b1337f2ff61994b67af8b2ff8330d7.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_5cde020ee9b1337f2ff61994b67af8b2ff8330d7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="6bc41d9d6fd12d2ef23c785a259011001f4a1a5b">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-module-9.4.0_8db0a0949eed83aa97cde0b8287ddefe36e9abe2.jar" />
+        sha1="4b630471536351be7c3c3100735c75b7ad2cbd84">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-9.4.0_88b2d554a4d8c005dc24261bcc33bd7485bfc529.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.0_ead9961247ff95a77c60b1f5ecd4b9939bafa88a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\libs\ProviGen-lib-2.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="6130059a946e844d8520b16f6bb0e8a7673da046">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\ProviGen-lib-2.0.1_c1b09d164df58164b567e65d5328e7f2ca363b6f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="18b5697c65c4fe5b7381613b8b8ae9ac52e26fa7">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-9.4.0_be1c7ef68d33dec05034d911f09dee65560d48df.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="4348dd26d83b56c2058b768222c3271bce911724">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-9.4.0_9a629d4b0dba7d052b05fd76567e796990c0e28b.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-9.4.0_e175fffc121cbcdebfd46af6f2900f30aeff8698.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\libs\YouTubeAndroidPlayerApi.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\design\23.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\YouTubeAndroidPlayerApi_38127901561f34511abdb1abb9816341784fe933.jar" />
+        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.0.0_d547fb49d18d722e0b4fd89d6790fc367a80e08e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-9.4.0_0e977fda289e32f6d46ed91ec7b802834ef49f7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="a440fb3fec30ff925e9f601cc458fb6671834cb2">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-9.4.0_fdbb6fa71e0f7036b25a3b6c1ee47544c6547284.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.4.0_b37a0fdf1464264ed5c4f31fd66ec64cf62724a9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="34762013d39dbe6c656050589c44e8b61b9a2c5d">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-common-9.4.0_05318381d8f6f856c5378c47b01a45d0caccbc61.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-common-9.4.0_6b7841823506058be4231a1d7c5bdfb6c4c27ed0.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.4.0_181f00b117f51a1499e05b9fecc92e25d0fda693.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0_a389c64214100c7dd48c5d1f93e2329602423679.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0_9c259301042c875fb3df7cd23b6f1b52e4d55ae6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="7912610ed96381c25c36d986eba422731b9641b6">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.astuetz-pagerslidingtabstrip-1.0.1_4d7be1737fa6e7e4ebf7553c56d22e7299c0acee.jar" />
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-9.4.0_1cefb12a4346db9a76db97dcf1b10000161de61d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\jars\classes.jar"
+        jar="C:\Users\geniushkg\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.1.0\support-annotations-24.1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="3b7173b3df4c7029699919414400041f64519e34">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-9.4.0_bf608704bd2f4c9c10d1d87d3176d88169f3d5f1.jar" />
+        sha1="8a23146e1a8c7cb4758e3d3f62449213f1e51f67">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\support-annotations-24.1.0_a35e93002d9310028fdbb0cc89299ef9e2fe02b5.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.4.0\jars\classes.jar"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="58c9f5ee817fdb8b658fd7455fadfb74119f7ee9">
-        <dex dex="D:\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-base-9.4.0_d90912116e147f259eaa57bdc88cff6d4709544c.jar" />
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-base-9.4.0_1d18f87cebcfca50093e1dc7915d585d9315a7ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.0.0_28b1fd4b742b5863cdab094b4bc1cf5a7a8f842d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6bc41d9d6fd12d2ef23c785a259011001f4a1a5b">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-module-9.4.0_12d1993280917ac83e3c1331371e5fa4942025ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.0_eb244265c0840f315fdc2fe66a0436d121427e2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.4.0_ed6bfdc5e517975a7f7ad46e834c9028f5456180.jar" />
     </item>
 
 </items>

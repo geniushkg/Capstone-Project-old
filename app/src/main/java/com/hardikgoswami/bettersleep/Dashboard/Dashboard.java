@@ -1,28 +1,32 @@
 package com.hardikgoswami.bettersleep.Dashboard;
 
+import android.app.LoaderManager;
 import android.os.Handler;
-import android.support.v4.app.LoaderManager;
+import android.support.v4.app.Fragment;
+
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.astuetz.PagerSlidingTabStrip;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 import com.hardikgoswami.bettersleep.R;
+import com.hardikgoswami.bettersleep.SleepPattern.SleepPatternContract;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchContract;
+import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
 
 
-public class Dashboard extends AppCompatActivity  implements {
+public class Dashboard extends AppCompatActivity {
     public static final String TAG = "BETTERSLEEP";
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
     LoaderManager loaderManager;
     SleepDataRepository dataRepository;
-    SleepPunchContract.Presenter presenter;
-    SimpleOnPageChangeListener simpleOnPageChangeListener;
+    SleepPunchContract.Presenter presenterPunchIn;
+    SleepPatternContract.Presenter presenterPattern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +35,56 @@ public class Dashboard extends AppCompatActivity  implements {
         // setup  toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setup viewpager & header strip
-        ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
-        // setup SimpleOnPageListener
-        simpleOnPageChangeListener = new SimpleOnPageChangeListener();
-
         Log.d(TAG, "Dashboard activity");
         // setup loadermanager
-        loaderManager = getSupportLoaderManager();
+        loaderManager = getLoaderManager();
         // setup SleepData Repository
         dataRepository = new SleepDataRepository(this);
-        // TODO: Setup Presenter for sleeppunch
+        // setup listener
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.d(TAG, "onPageSelected : " + position);
+                // TODO: Setup Presenter for appropriate fragment
+
+                switch (position) {
+                    case 0:
+                        // punchin fragment
+                        SleepPunchContract.View fr = (SleepPunchContract.View) getSupportFragmentManager()
+                                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
+
+                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, fr);
+
+                        break;
+                    case 1:
+                        // yognidra
+                        break;
+                    case 2:
+                        // patter fragment
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
 
     }
-
 
     @Override
     public void onBackPressed() {
@@ -65,10 +100,6 @@ public class Dashboard extends AppCompatActivity  implements {
                     exit = false;
                 }
             }, 3 * 1000);
-
         }
-
     }
-
-
 }
