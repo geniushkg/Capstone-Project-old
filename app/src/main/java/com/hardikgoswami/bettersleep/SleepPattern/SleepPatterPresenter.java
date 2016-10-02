@@ -10,7 +10,7 @@ import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchContract;
 /**
  * Created by geniushkg on 9/29/2016.
  */
-public class SleepPatterPresenter implements SleepPatternContract.Presenter,LoaderManager.LoaderCallbacks{
+public class SleepPatterPresenter implements SleepPatternContract.Presenter, LoaderManager.LoaderCallbacks {
 
     LoaderManager mLoaderManager;
     SleepDataRepository mDataRepo;
