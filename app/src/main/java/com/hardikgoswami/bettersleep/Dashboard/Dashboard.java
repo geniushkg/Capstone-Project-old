@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.astuetz.PagerSlidingTabStrip;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 import com.hardikgoswami.bettersleep.R;
+import com.hardikgoswami.bettersleep.SleepPattern.SleepPatterPresenter;
 import com.hardikgoswami.bettersleep.SleepPattern.SleepPatternContract;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchContract;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
@@ -60,10 +61,10 @@ public class Dashboard extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         // punchin fragment
-                        SleepPunchContract.View fr = (SleepPunchContract.View) getSupportFragmentManager()
+                        SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
 
-                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, fr);
+                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch);
 
                         break;
                     case 1:
@@ -71,6 +72,9 @@ public class Dashboard extends AppCompatActivity {
                         break;
                     case 2:
                         // patter fragment
+                        SleepPatternContract.View mViewPattern = (SleepPatternContract.View)  getSupportFragmentManager()
+                                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
+                        presenterPattern = new SleepPatterPresenter(loaderManager,dataRepository,mViewPattern);
                         break;
                     default:
                         break;
