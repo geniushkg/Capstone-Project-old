@@ -1,8 +1,10 @@
 package com.hardikgoswami.bettersleep.Dashboard;
 
 import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 import com.hardikgoswami.bettersleep.R;
 import com.hardikgoswami.bettersleep.SleepPattern.SleepPatterPresenter;
@@ -28,7 +31,7 @@ public class Dashboard extends AppCompatActivity {
     SleepDataRepository dataRepository;
     SleepPunchContract.Presenter presenterPunchIn;
     SleepPatternContract.Presenter presenterPattern;
-
+    Loader<Debt> mLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,7 @@ public class Dashboard extends AppCompatActivity {
                         SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
 
-                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch);
+                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch ,mLoader);
 
                         break;
                     case 1:
@@ -75,7 +78,7 @@ public class Dashboard extends AppCompatActivity {
                         SleepPatternContract.View mViewPattern = (SleepPatternContract.View)  getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
                         presenterPattern = new SleepPatterPresenter(loaderManager,dataRepository,mViewPattern);
-                        
+
                         break;
                     default:
                         break;

@@ -4,21 +4,27 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
 
+import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 
 /**
  * Created by geniushkg on 9/28/2016.
  */
-public class SleepPunchPresenter implements SleepPunchContract.Presenter, LoaderManager.LoaderCallbacks {
+public class SleepPunchPresenter implements SleepPunchContract.Presenter, LoaderManager.LoaderCallbacks<Debt> {
+
+
     LoaderManager loaderManager;
     SleepDataRepository dataRepository;
     SleepPunchContract.View mView;
-
-
-    public SleepPunchPresenter(LoaderManager loaderManager, SleepDataRepository dataRepository, SleepPunchContract.View mView) {
+    Loader<Debt> mLoader;
+    Debt mData;
+    public static int DEBT_QUERY = 1;
+    public SleepPunchPresenter(LoaderManager loaderManager, SleepDataRepository dataRepository, SleepPunchContract.View mView, Loader<Debt> debtLoader) {
         this.loaderManager = loaderManager;
         this.dataRepository = dataRepository;
         this.mView = mView;
+        this.mLoader = debtLoader;
+        mView.setPresenter(this);
     }
 
     @Override
@@ -38,19 +44,27 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
 
     @Override
     public void start() {
-
+        loaderManager.initLoader(DEBT_QUERY,null,this);
     }
 
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
-        return null;
+        // TODO : setup loading view for debt counter and enable it.
+        return mLoader;
 
     }
 
     @Override
-    public void onLoadFinished(Loader loader, Object data) {
+    public void onLoadFinished(Loader<Debt> loader, Debt data) {
+        // TODO:  disable loading view
+        if(data == null){
+            //// TODO: 10/3/2016  cannot be null show error and error view enable
+        }else {
+            mData = data;
+        }
 
     }
+
 
     @Override
     public void onLoaderReset(Loader loader) {
