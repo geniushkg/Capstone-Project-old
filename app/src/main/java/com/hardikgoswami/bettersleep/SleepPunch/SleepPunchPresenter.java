@@ -14,6 +14,7 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
     SleepDataRepository dataRepository;
     SleepPunchContract.View mView;
 
+
     public SleepPunchPresenter(LoaderManager loaderManager, SleepDataRepository dataRepository, SleepPunchContract.View mView) {
         this.loaderManager = loaderManager;
         this.dataRepository = dataRepository;

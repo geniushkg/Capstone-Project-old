@@ -1,4 +1,4 @@
-package com.hardikgoswami.bettersleep.Yognidra;
+package com.hardikgoswami.bettersleep.yognidra;
 
 
 import android.os.Bundle;

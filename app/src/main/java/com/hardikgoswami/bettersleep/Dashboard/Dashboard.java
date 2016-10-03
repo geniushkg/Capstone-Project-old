@@ -75,6 +75,7 @@ public class Dashboard extends AppCompatActivity {
                         SleepPatternContract.View mViewPattern = (SleepPatternContract.View)  getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
                         presenterPattern = new SleepPatterPresenter(loaderManager,dataRepository,mViewPattern);
+                        
                         break;
                     default:
                         break;
