@@ -5,4 +5,5 @@
     <dimen name="signin_font">28sp</dimen>
     <dimen name="appname_font_size">18sp</dimen>
     <dimen name="appname_margin">72dp</dimen>
+    <dimen name="debt_counter_size">56sp</dimen>
 </resources>
