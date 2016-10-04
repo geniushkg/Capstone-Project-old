@@ -11,5 +11,10 @@
     android:textSize="@dimen/debt_counter_size"
     android:layout_gravity="center_horizontal"
     android:id="@+id/dbtCounter"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/debtcounter_margin"/>
 
 </LinearLayout>

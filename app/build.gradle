@@ -35,5 +35,7 @@ dependencies {
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile files('libs/ProviGen-lib-2.0.1.jar')
+    compile 'com.google.firebase:firebase-database:9.4.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
