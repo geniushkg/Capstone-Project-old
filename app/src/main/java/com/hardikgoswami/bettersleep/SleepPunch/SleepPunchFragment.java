@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.R;
 
 /**
@@ -17,7 +18,7 @@ import com.hardikgoswami.bettersleep.R;
 public class SleepPunchFragment extends Fragment implements SleepPunchContract.View {
 
     SleepPunchContract.Presenter mSleepPresent;
-
+    DebtCounterView dbCountView;
     public SleepPunchFragment() {
         // Required empty public constructor
     }
@@ -47,14 +48,16 @@ public class SleepPunchFragment extends Fragment implements SleepPunchContract.V
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.sleeppunch_frag, container, false);
-
-
+        dbCountView =(DebtCounterView) rootView.findViewById(R.id.dbtCounter);
         return rootView;
     }
 
     @Override
-    public void showSleepDebtData() {
-
+    public void showSleepDebtData(Debt data) {
+        // update sleepdebt data to view
+        int hours = 0;
+        hours = data.getHours();
+        dbCountView.setText(""+hours);
     }
 
     @Override

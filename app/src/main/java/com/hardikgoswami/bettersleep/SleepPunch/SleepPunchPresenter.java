@@ -28,8 +28,8 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
     }
 
     @Override
-    public void fetchSleepDebtData() {
-
+    public void fetchSleepDebtData(Debt debt) {
+        mView.showSleepDebtData(debt);
     }
 
     @Override
@@ -51,7 +51,6 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
     public Loader onCreateLoader(int id, Bundle args) {
         // TODO : setup loading view for debt counter and enable it.
         return mLoader;
-
     }
 
     @Override
@@ -62,9 +61,8 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
         }else {
             mData = data;
         }
-
+        fetchSleepDebtData(data);
     }
-
 
     @Override
     public void onLoaderReset(Loader loader) {

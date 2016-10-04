@@ -1,9 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment"
     android:tag="@string/sleep_punch_tag">
+<com.hardikgoswami.bettersleep.SleepPunch.DebtCounterView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textSize="@dimen/debt_counter_size"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/dbtCounter"/>
 
-
-</FrameLayout>
+</LinearLayout>
