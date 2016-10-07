@@ -93,28 +93,32 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public static void firebaseHelper(){
         // TODO: 10/7/2016 test firebase
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference("12546325");
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
+                if(value != null) {
+                    Log.d(TAG, "Value is: " + value);
+                }else {
+                    Log.d(TAG,"null value or refrence not found");
+                }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG,"failure :"+databaseError.getMessage());
             }
         });
-
-
     }
 
     @Override
