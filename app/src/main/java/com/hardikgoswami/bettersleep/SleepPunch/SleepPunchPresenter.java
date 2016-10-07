@@ -3,7 +3,6 @@ package com.hardikgoswami.bettersleep.SleepPunch;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
-
 import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 
