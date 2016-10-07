@@ -14,7 +14,7 @@ import com.hardikgoswami.bettersleep.Data.Source.Local.SleepDebtContract;
 public class DebtPatternLoader extends AsyncTaskLoader<Debt> {
 	// TODO: to update class for use in sleep pattern fragment
     Debt mDebt;
-    public DebtTimeLoader(Context context) {
+    public DebtPatternLoader(Context context) {
         super(context);
     }
 

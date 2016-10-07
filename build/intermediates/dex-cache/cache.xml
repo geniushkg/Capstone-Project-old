@@ -57,21 +57,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\geniushkg\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.4.0\ea392375cf9ff59234a82e7928a204215ccc98cd\butterknife-annotations-8.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
-        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_5cde020ee9b1337f2ff61994b67af8b2ff8330d7.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="4b630471536351be7c3c3100735c75b7ad2cbd84">
         <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-9.4.0_88b2d554a4d8c005dc24261bcc33bd7485bfc529.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\geniushkg\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.4.0\ea392375cf9ff59234a82e7928a204215ccc98cd\butterknife-annotations-8.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_5cde020ee9b1337f2ff61994b67af8b2ff8330d7.jar" />
     </item>
     <item
         is-multidex="false"
@@ -156,6 +156,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="0e4d53465cc141bec58f18a894e4c4e80633fa32">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-connection-9.4.0_134d4242d5bf954007c8c167d3fa6f9e6c813b46.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -198,6 +207,15 @@
         revision="23.0.3"
         sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
         <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.4.0_ed6bfdc5e517975a7f7ad46e834c9028f5456180.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="84bf369090a8f7e293817efbd6ccf31ada1be32b">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-9.4.0_f4c9b21d1e6541aef88cea635eb036d8ec82d90c.jar" />
     </item>
 
 </items>
