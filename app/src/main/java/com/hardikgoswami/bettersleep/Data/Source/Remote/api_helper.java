@@ -24,5 +24,5 @@ public class api_helper{
     public static int getUserDebtFromId(int userId){
     return 0;
     }
-
+// TODO: 10/8/2016 implement sync adapter and complete firebase integration 
 }
