@@ -39,6 +39,8 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_act);
+        Bundle bundle = getIntent().getExtras();
+        String UserId = bundle.getString("ID");
         // setup  toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setup viewpager & header strip
@@ -47,7 +49,7 @@ public class Dashboard extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
-        Log.d(TAG, "Dashboard activity");
+        Log.d(TAG, "Dashboard activity for user with id : "+UserId);
         // setup loadermanager
         loaderManager = getLoaderManager();
         // setup SleepData Repository

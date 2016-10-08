@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getEmail());
-                    navigateToDashboard();
+                    navigateToDashboard(user.getUid());
                 } else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -113,7 +113,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                        navigateToDashboard();
+                        FirebaseUser user = task.getResult().getUser();
+                        String Id = user.getUid();
+                        navigateToDashboard(Id);
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
@@ -127,11 +129,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     /*
     *This method just helps to navigate to dashboard on sign in success
      */
-    void navigateToDashboard() {
+    void navigateToDashboard(String Uid) {
+
         Intent intent = new Intent(LoginActivity.this, Dashboard.class);
+
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+        Bundle b = new Bundle();
+        b.putString("ID",Uid);
+
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }
