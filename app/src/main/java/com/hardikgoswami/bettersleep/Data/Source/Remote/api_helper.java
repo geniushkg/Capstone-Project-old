@@ -14,8 +14,31 @@ import com.google.firebase.database.ValueEventListener;
 public class api_helper{
     public static final String TAG = "BETTERSLEEP";
     public static boolean status = false;
+	
     public static void newUserWithId(int userId , int debtHour){
+		 FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(""+userId);
+        // Read from the database
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                if(value != null) {
+                    Log.d(TAG, "Value is: " + value);
+                    status =true;
+                }else {
+                    Log.d(TAG,"null value or refrence not found");
+                    status = false;
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG,"failure :"+databaseError.getMessage());
+            }
+        });
+		
     }
 
     public static boolean checkIfUserExist(int userId){
