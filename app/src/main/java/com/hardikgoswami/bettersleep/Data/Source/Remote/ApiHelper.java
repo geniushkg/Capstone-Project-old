@@ -15,7 +15,7 @@ public class ApiHelper {
     public static final String TAG = "BETTERSLEEP";
     public static boolean status = false;
     public static int valueFetched = 0;
-    
+
 
     public static void newUserWithId(int userId, int debtHour) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
