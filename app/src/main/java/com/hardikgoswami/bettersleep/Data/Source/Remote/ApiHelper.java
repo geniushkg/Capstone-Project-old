@@ -11,66 +11,70 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class api_helper{
+public class ApiHelper {
     public static final String TAG = "BETTERSLEEP";
     public static boolean status = false;
-	
-    public static void newUserWithId(int userId , int debtHour){
-		 FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(""+userId);
-        // Read from the database
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                if(value != null) {
-                    Log.d(TAG, "Value is: " + value);
-                    status =true;
-                }else {
-                    Log.d(TAG,"null value or refrence not found");
-                    status = false;
-                }
-            }
+    public static int valueFetched = 0;
+    
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG,"failure :"+databaseError.getMessage());
-            }
-        });
-		
+    public static void newUserWithId(int userId, int debtHour) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("" + userId);
+        myRef.setValue("" + debtHour);
     }
 
-    public static boolean checkIfUserExist(int userId){
+    public static boolean checkIfUserExist(int userId) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(""+userId);
+        DatabaseReference myRef = database.getReference("" + userId);
         // Read from the database
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
-                if(value != null) {
+                if (value != null) {
                     Log.d(TAG, "Value is: " + value);
-                    status =true;
-                }else {
-                    Log.d(TAG,"null value or refrence not found");
+                    status = true;
+                } else {
+                    Log.d(TAG, "null value or refrence not found");
                     status = false;
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG,"failure :"+databaseError.getMessage());
+                Log.d(TAG, "failure :" + databaseError.getMessage());
             }
         });
         return status;
 
     }
 
-    public static int getUserDebtFromId(int userId){
-    return 0;
+    public static int getUserDebtFromId(int userId) {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("" + userId);
+        // Read from the database
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                if (value != null) {
+                    Log.d(TAG, "Value is: " + value);
+                    valueFetched = Integer.valueOf(value);
+                } else {
+                    Log.d(TAG, "null value or refrence not found");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG, "failure :" + databaseError.getMessage());
+            }
+        });
+
+        return valueFetched;
     }
-// TODO: 10/8/2016 implement sync adapter and complete firebase integration
 }
