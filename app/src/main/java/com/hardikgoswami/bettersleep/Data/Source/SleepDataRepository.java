@@ -53,7 +53,7 @@ public class SleepDataRepository {
         if (cursor.moveToFirst()) {
             do {
                 currentDebt = cursor.getInt(0);
-                // do something meaningful
+
             } while (cursor.moveToNext());
         }
         if (positive) {
