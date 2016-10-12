@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.SyncResult;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.hardikgoswami.bettersleep.Data.Source.Local.SleepDebtContract;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
@@ -50,7 +51,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                               ContentProviderClient provider,
                               SyncResult syncResult) {
 
-
+        Log.d(TAG,"onPerform sync executed");
         int currentDebtOnServer = 0;
         currentDebtOnServer = ApiHelper.getUserDebtFromId(userEmail);
 
@@ -63,21 +64,19 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         null,
                         null);
         int currentDebtLocal = 0;
-        if(cursor != null){
+        if (cursor != null) {
             currentDebtLocal = cursor.getInt(0);
         }
 
-        // TODO: 10/12/2016 if local data does not exist overrite local data by remote fetched data
 
-        if(currentDebtLocal == 0 ){
+        if (currentDebtLocal == 0) {
             SleepDataRepository sleepRepo = new SleepDataRepository(mContext);
-            sleepRepo.modifyDebt(currentDebtOnServer,true);
+            sleepRepo.modifyDebt(currentDebtOnServer, true);
         }
 
-        // TODO: 10/12/2016 if data in local exist and remote != local ,then update to remote server
 
-        if (currentDebtLocal != currentDebtOnServer){
-            ApiHelper.newUserWithId(userEmail,currentDebtLocal);
+        if (currentDebtLocal != currentDebtOnServer) {
+            ApiHelper.newUserWithId(userEmail, currentDebtLocal);
         }
 
     }
