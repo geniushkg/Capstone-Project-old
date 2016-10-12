@@ -27,7 +27,18 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     @Override
-    public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
+    public void onPerformSync(Account account,
+                              Bundle extras,
+                              String authority,
+                              ContentProviderClient provider,
+                              SyncResult syncResult) {
+        // TODO: 10/12/2016 get debt from remote server 
 
+
+        // TODO: 10/12/2016 get debt from local server  
+
+        // TODO: 10/12/2016 if local data does not exist overrite local data by remote fetched data 
+
+        // TODO: 10/12/2016 if data in local exist and remote != local ,then update to remote server 
     }
 }
