@@ -1,8 +1,11 @@
 package com.hardikgoswami.bettersleep.Dashboard;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +14,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
 import com.hardikgoswami.bettersleep.R;
@@ -27,6 +25,7 @@ import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
 
 public class Dashboard extends AppCompatActivity {
     public static final String TAG = "BETTERSLEEP";
+    private static final String PREFS_KEY ="EMAIL" ;
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
     LoaderManager loaderManager;
@@ -39,7 +38,7 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_act);
         Bundle bundle = getIntent().getExtras();
-        String UserId = bundle.getString("ID");
+        String emailId = bundle.getString("ID");
         // setup  toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setup viewpager & header strip
@@ -48,7 +47,11 @@ public class Dashboard extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
-        Log.d(TAG, "Dashboard activity for user with id : "+UserId);
+        Log.d(TAG, "Dashboard activity for user with id : "+emailId);
+        //store in sharepreference
+        saveUserEmailToSharedPreference(emailId);
+
+
         // setup loadermanager
         loaderManager = getLoaderManager();
         // setup SleepData Repository
@@ -96,6 +99,16 @@ public class Dashboard extends AppCompatActivity {
         });
 
     }
+
+    public void saveUserEmailToSharedPreference(String email){
+            SharedPreferences settings;
+            SharedPreferences.Editor editor;
+            settings = getSharedPreferences(TAG, Context.MODE_PRIVATE); //1
+            editor = settings.edit(); //2
+            editor.putString(PREFS_KEY, email); //3
+            editor.commit(); //4
+        }
+
 
     
     @Override

@@ -17,16 +17,16 @@ public class ApiHelper {
     public static int valueFetched = 0;
 
 
-    public static void newUserWithId(int userId, int debtHour) {
+    public static void newUserWithId(String userId, int debtHour) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("" + userId);
+        DatabaseReference myRef = database.getReference(userId);
         myRef.setValue("" + debtHour);
     }
 
-    public static boolean checkIfUserExist(int userId) {
+    public static boolean checkIfUserExist(String userId) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("" + userId);
+        DatabaseReference myRef = database.getReference(userId);
         // Read from the database
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -51,10 +51,10 @@ public class ApiHelper {
 
     }
 
-    public static int getUserDebtFromId(int userId) {
+    public static int getUserDebtFromId(String userId) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("" + userId);
+        DatabaseReference myRef = database.getReference(userId);
         // Read from the database
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
