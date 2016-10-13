@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/debtcounter_margin"/>
+        android:layout_margin="@dimen/debtcounter_margin"
+        android:id="@+id/sleep_punch_btn"/>
 
 </LinearLayout>

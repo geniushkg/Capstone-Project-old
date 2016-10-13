@@ -7,6 +7,7 @@ import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
@@ -19,6 +20,7 @@ public class SleepPunchFragment extends Fragment implements SleepPunchContract.V
 
     SleepPunchContract.Presenter mSleepPresent;
     DebtCounterView dbCountView;
+    Button mPunchInButton;
     public SleepPunchFragment() {
         // Required empty public constructor
     }
@@ -49,6 +51,13 @@ public class SleepPunchFragment extends Fragment implements SleepPunchContract.V
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.sleeppunch_frag, container, false);
         dbCountView =(DebtCounterView) rootView.findViewById(R.id.dbtCounter);
+        mPunchInButton = (Button) rootView.findViewById(R.id.sleep_punch_btn);
+        mPunchInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSleepPresent.showPunchInDialog();
+            }
+        });
         return rootView;
     }
 

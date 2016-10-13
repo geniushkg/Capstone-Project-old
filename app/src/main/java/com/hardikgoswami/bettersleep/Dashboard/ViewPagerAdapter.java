@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.hardikgoswami.bettersleep.SleepPattern.SleepPatternFragment;
 import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment;
-import com.hardikgoswami.bettersleep.yognidra.YognidraFragment;
+import com.hardikgoswami.bettersleep.Yognidra.YognidraFragment;
 
 
 /**

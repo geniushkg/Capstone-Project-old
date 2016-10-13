@@ -33,6 +33,7 @@ public class Dashboard extends AppCompatActivity {
     SleepPunchContract.Presenter presenterPunchIn;
     SleepPatternContract.Presenter presenterPattern;
     Loader<Debt> mLoader;
+    ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class Dashboard extends AppCompatActivity {
         // setup  toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setup viewpager & header strip
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
+        viewPager = (ViewPager) findViewById(R.id.vpPager);
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -50,8 +51,6 @@ public class Dashboard extends AppCompatActivity {
         Log.d(TAG, "Dashboard activity for user with id : "+emailId);
         //store in sharepreference
         saveUserEmailToSharedPreference(emailId);
-
-
         // setup loadermanager
         loaderManager = getLoaderManager();
         // setup SleepData Repository
@@ -73,9 +72,7 @@ public class Dashboard extends AppCompatActivity {
                         // punchin fragment
                         SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
-
                         presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch ,mLoader);
-
                         break;
                     case 1:
                         // yognidra
@@ -97,7 +94,18 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
+        // setdefault punch in presenter
+        // change default page in viewpager
+        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(0);
+        //setDefaultPresenterForViewPager();
 
+    }
+
+    private void setDefaultPresenterForViewPager() {
+        SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
+                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
+        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch ,mLoader);
     }
 
     public void saveUserEmailToSharedPreference(String email){

@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\geniushkg\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\commons-cli-1.2_668720a82905cb771944856748d277fdcb5b1e94.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -171,6 +180,24 @@
         revision="23.0.3"
         sha1="58c9f5ee817fdb8b658fd7455fadfb74119f7ee9">
         <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-base-9.4.0_1d18f87cebcfca50093e1dc7915d585d9315a7ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\geniushkg\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\jsr305-2.0.1_f3dfc5286d9d7d17b69356de26acd47a4d5b647c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android_udacity\Capstone-Project\app\build\intermediates\exploded-aar\com.facebook.stetho\stetho\1.4.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="26b6f0185cbba8917ba9d9d0bd170f95311622ab">
+        <dex dex="D:\android_udacity\Capstone-Project\app\build\intermediates\pre-dexed\debug\com.facebook.stetho-stetho-1.4.1_584b9979218d8a6d8841bf042bdae49f54a3ef2e.jar" />
     </item>
     <item
         is-multidex="false"

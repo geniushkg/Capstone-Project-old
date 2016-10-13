@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hardikgoswami.bettersleep">
 
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".BSApp"
         android:theme="@style/AppTheme">
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
@@ -20,6 +26,19 @@
             android:name="com.hardikgoswami.bettersleep.Data.Source.Local.BSContentProvider"
             android:authorities="com.hardikgoswami.bettersleep" >
         </provider>
+
+
+        <service
+            android:name=".Data.Source.Remote.SyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sync" />
+        </service>
+
     </application>
 
 </manifest>
