@@ -14,6 +14,8 @@ public class SleepPunchContract {
         void showSleepDebtHelpDialog();
 
         void showPunchInDialog();
+
+        void showMessage(String message);
     }
 
     public interface Presenter extends BasePresenter {

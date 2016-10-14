@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.StrictMode;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import com.hardikgoswami.bettersleep.SleepPunch.SleepPunchPresenter;
 
 public class Dashboard extends AppCompatActivity {
     public static final String TAG = "BETTERSLEEP";
-    private static final String PREFS_KEY ="EMAIL" ;
+    private static final String PREFS_KEY = "EMAIL";
     private Boolean exit = false;
     ViewPagerAdapter pagerAdapter;
     LoaderManager loaderManager;
@@ -34,6 +34,7 @@ public class Dashboard extends AppCompatActivity {
     SleepPatternContract.Presenter presenterPattern;
     Loader<Debt> mLoader;
     ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class Dashboard extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pagerSlidingTabStrip.setViewPager(viewPager);
-        Log.d(TAG, "Dashboard activity for user with id : "+emailId);
+        Log.d(TAG, "Dashboard activity for user with id : " + emailId);
         //store in sharepreference
         saveUserEmailToSharedPreference(emailId);
         // setup loadermanager
@@ -72,16 +73,16 @@ public class Dashboard extends AppCompatActivity {
                         // punchin fragment
                         SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
-                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch ,mLoader);
+                        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
                         break;
                     case 1:
                         // yognidra
                         break;
                     case 2:
                         // patter fragment
-                        SleepPatternContract.View mViewPattern = (SleepPatternContract.View)  getSupportFragmentManager()
+                        SleepPatternContract.View mViewPattern = (SleepPatternContract.View) getSupportFragmentManager()
                                 .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
-                        presenterPattern = new SleepPatterPresenter(loaderManager,dataRepository,mViewPattern);
+                        presenterPattern = new SleepPatterPresenter(loaderManager, dataRepository, mViewPattern);
 
                         break;
                     default:
@@ -95,30 +96,45 @@ public class Dashboard extends AppCompatActivity {
             }
         });
         // setdefault punch in presenter
-        // change default page in viewpager
-        viewPager.setCurrentItem(1);
-        viewPager.setCurrentItem(0);
-        //setDefaultPresenterForViewPager();
+
+        setDefaultPresenterForViewPager();
 
     }
 
     private void setDefaultPresenterForViewPager() {
-        SleepPunchContract.View mViewPunch = (SleepPunchContract.View) getSupportFragmentManager()
-                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
-        presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch ,mLoader);
-    }
+//        SleepPunchContract.View mViewPunch = (SleepPunchContract.View) pagerAdapter.getCurrentFragment();
+//        if (mViewPunch != null) {
+//            presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
+//            Log.d(TAG,"view not null presenter set");
+//        }else {
+//            Log.d(TAG,"view null fragment not initiated");
+//
+//        }
 
-    public void saveUserEmailToSharedPreference(String email){
-            SharedPreferences settings;
-            SharedPreferences.Editor editor;
-            settings = getSharedPreferences(TAG, Context.MODE_PRIVATE); //1
-            editor = settings.edit(); //2
-            editor.putString(PREFS_KEY, email); //3
-            editor.commit(); //4
+
+        Fragment page =  getSupportFragmentManager()
+                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
+        if (viewPager.getCurrentItem() == 0 && page != null) {
+            SleepPunchContract.View mViewPunch =  (SleepPunchContract.View) page;
+            presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
+            Log.d(TAG," init done");
+        }else {
+            Log.d(TAG,"null not init");
         }
 
 
-    
+    }
+
+    public void saveUserEmailToSharedPreference(String email) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+        settings = getSharedPreferences(TAG, Context.MODE_PRIVATE); //1
+        editor = settings.edit(); //2
+        editor.putString(PREFS_KEY, email); //3
+        editor.commit(); //4
+    }
+
+
     @Override
     public void onBackPressed() {
         if (exit) {

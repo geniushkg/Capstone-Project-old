@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.R;
@@ -78,6 +79,12 @@ public class SleepPunchFragment extends Fragment implements SleepPunchContract.V
     public void showPunchInDialog() {
 
     }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(),"Message : "+message,Toast.LENGTH_SHORT).show();
+    }
+
 
     @Override
     public void setPresenter(SleepPunchContract.Presenter presenter) {

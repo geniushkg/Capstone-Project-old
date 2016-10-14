@@ -26,6 +26,8 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
         mView.setPresenter(this);
     }
 
+
+
     @Override
     public void fetchSleepDebtData(Debt debt) {
         mView.showSleepDebtData(debt);
@@ -33,7 +35,7 @@ public class SleepPunchPresenter implements SleepPunchContract.Presenter, Loader
 
     @Override
     public void showPunchInDialog() {
-
+        mView.showMessage("This is from Presenter , show punch trigered");
     }
 
     @Override
