@@ -8,4 +8,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sleep_pattern_tag">sleep_pattern</string>
     <string name="sleep_punch_tag">sleep_punch</string>
+    <string name="debt_widget_label">Sleep Debt</string>
 </resources>

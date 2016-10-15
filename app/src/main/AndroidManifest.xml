@@ -38,7 +38,12 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/sync" />
         </service>
-
+        <receiver android:name=".ExampleAppWidgetProvider" android:label="@string/debt_widget_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget1_info" />
+        </receiver>
     </application>
 
 </manifest>
