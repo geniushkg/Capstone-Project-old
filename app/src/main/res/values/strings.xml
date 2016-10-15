@@ -9,4 +9,5 @@
     <string name="sleep_pattern_tag">sleep_pattern</string>
     <string name="sleep_punch_tag">sleep_punch</string>
     <string name="debt_widget_label">Sleep Debt</string>
+    <string name="sleep_debt_widget">Sleep Debt is 10 hours</string>
 </resources>
