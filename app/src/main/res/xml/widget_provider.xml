@@ -3,6 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="460dp"
     android:minHeight="120dp"
-    android:updatePeriodMillis="86400000"
+    android:updatePeriodMillis="1000"
     android:initialLayout="@layout/sleepdebt_widget">
 </appwidget-provider>

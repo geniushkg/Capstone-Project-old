@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -57,6 +58,14 @@ public class Dashboard extends AppCompatActivity {
         // setup SleepData Repository
         dataRepository = new SleepDataRepository(this);
         // setup listener
+        viewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Log.d(TAG, "layout inflated");
+                setDefaultPresenterForViewPager();
+            }
+        });
+        // setup addonchange page listener
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -97,32 +106,20 @@ public class Dashboard extends AppCompatActivity {
         });
         // setdefault punch in presenter
 
-        setDefaultPresenterForViewPager();
+        //    setDefaultPresenterForViewPager();
 
     }
 
     private void setDefaultPresenterForViewPager() {
-//        SleepPunchContract.View mViewPunch = (SleepPunchContract.View) pagerAdapter.getCurrentFragment();
-//        if (mViewPunch != null) {
-//            presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
-//            Log.d(TAG,"view not null presenter set");
-//        }else {
-//            Log.d(TAG,"view null fragment not initiated");
-//
-//        }
 
-
-        Fragment page =  getSupportFragmentManager()
-                .findFragmentByTag("android:switcher:" + R.id.vpPager + ":" + viewPager.getCurrentItem());
+        Fragment page = pagerAdapter.getCurrentFragment();
         if (viewPager.getCurrentItem() == 0 && page != null) {
-            SleepPunchContract.View mViewPunch =  (SleepPunchContract.View) page;
+            SleepPunchContract.View mViewPunch = (SleepPunchContract.View) page;
             presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
-            Log.d(TAG," init done");
-        }else {
-            Log.d(TAG,"null not init");
+            Log.d(TAG, " init done");
+        } else {
+            Log.d(TAG, "null not init");
         }
-
-
     }
 
     public void saveUserEmailToSharedPreference(String email) {
