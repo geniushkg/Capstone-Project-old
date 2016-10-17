@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class Dashboard extends AppCompatActivity {
     SleepPatternContract.Presenter presenterPattern;
     Loader<Debt> mLoader;
     ViewPager viewPager;
+    ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,15 @@ public class Dashboard extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setup viewpager & header strip
         viewPager = (ViewPager) findViewById(R.id.vpPager);
+        // global layout listener
+        globalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Log.d(TAG, "layout inflated");
+                setDefaultPresenterForViewPager();
+            }
+        };
+        // adapter
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -58,13 +70,8 @@ public class Dashboard extends AppCompatActivity {
         // setup SleepData Repository
         dataRepository = new SleepDataRepository(this);
         // setup listener
-        viewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                Log.d(TAG, "layout inflated");
-                setDefaultPresenterForViewPager();
-            }
-        });
+        viewPager.getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
+
         // setup addonchange page listener
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -111,12 +118,12 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void setDefaultPresenterForViewPager() {
-
         Fragment page = pagerAdapter.getCurrentFragment();
         if (viewPager.getCurrentItem() == 0 && page != null) {
             SleepPunchContract.View mViewPunch = (SleepPunchContract.View) page;
             presenterPunchIn = new SleepPunchPresenter(loaderManager, dataRepository, mViewPunch, mLoader);
             Log.d(TAG, " init done");
+            viewPager.getViewTreeObserver().removeOnGlobalLayoutListener(globalLayoutListener);
         } else {
             Log.d(TAG, "null not init");
         }
