@@ -10,4 +10,6 @@
     <string name="sleep_punch_tag">sleep_punch</string>
     <string name="debt_widget_label">Sleep Debt</string>
     <string name="sleep_debt_widget">Sleep Debt is 10 hours</string>
+    <string name="punchin_text_btn">Going to Bed</string>
+    <string name="navigate_text_btn">I Can't Sleep</string>
 </resources>

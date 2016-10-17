@@ -16,6 +16,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/debtcounter_margin"
-        android:id="@+id/sleep_punch_btn"/>
+        android:id="@+id/sleep_punch_btn"
+        android:text="@string/punchin_text_btn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/debtcounter_margin"
+        android:id="@+id/yognidra_navigate_btn"
+        android:text="@string/navigate_text_btn"/>
 
 </LinearLayout>

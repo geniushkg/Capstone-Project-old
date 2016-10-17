@@ -1,10 +1,13 @@
 package com.hardikgoswami.bettersleep.SleepPunch;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
 import com.hardikgoswami.bettersleep.Data.Source.Local.Debt;
 import com.hardikgoswami.bettersleep.Data.Source.SleepDataRepository;
+import com.hardikgoswami.bettersleep.Util.ActivityUtils;
 
 /**
  * Created by geniushkg on 9/28/2016.
