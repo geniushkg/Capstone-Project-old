@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
@@ -111,10 +109,6 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
-        // setdefault punch in presenter
-
-        //    setDefaultPresenterForViewPager();
-
     }
 
     private void setDefaultPresenterForViewPager() {
@@ -137,7 +131,6 @@ public class Dashboard extends AppCompatActivity {
         editor.putString(PREFS_KEY, email); //3
         editor.commit(); //4
     }
-
 
     @Override
     public void onBackPressed() {
