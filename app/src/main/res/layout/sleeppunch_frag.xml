@@ -3,27 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment"
-    android:tag="@string/sleep_punch_tag">
-<com.hardikgoswami.bettersleep.SleepPunch.DebtCounterView
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:textSize="@dimen/debt_counter_size"
-    android:layout_gravity="center_horizontal"
-    android:id="@+id/dbtCounter"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/debtcounter_margin"
-        android:id="@+id/sleep_punch_btn"
-        android:text="@string/punchin_text_btn"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/debtcounter_margin"
-        android:id="@+id/yognidra_navigate_btn"
-        android:text="@string/navigate_text_btn"/>
+    android:tag="@string/sleep_punch_tag"
+    tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/sleep_debt_counter_description"
+        android:textSize="@dimen/debt_counter_description_size"
+        android:layout_marginTop="@dimen/debtcounter_margin"/>
+
+    <com.hardikgoswami.bettersleep.SleepPunch.DebtCounterView
+        android:id="@+id/dbtCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/sleep_debt_counter"
+        android:textSize="@dimen/debt_counter_size" />
+
+    <Button
+        android:id="@+id/sleep_punch_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/debtcounter_margin"
+        android:text="@string/punchin_text_btn"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+
+    <Button
+        android:id="@+id/yognidra_navigate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/navigate_text_btn"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
 </LinearLayout>
