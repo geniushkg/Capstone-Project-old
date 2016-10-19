@@ -66,6 +66,7 @@ public class SleepPunchFragment extends Fragment implements SleepPunchContract.V
                 }
             }
         });
+        dbCountView.setText("00:50");
         return rootView;
     }
 

@@ -25,7 +25,7 @@ public class DebtCounterView extends TextView {
     }
 
     private void applyCustomFont(Context context) {
-        Typeface customFont = FontCache.getTypeface("Roboto-Thin.ttf", context);
+        Typeface customFont = FontCache.getTypeface("Roboto-Bold.ttf", context);
         setTypeface(customFont);
     }
 
