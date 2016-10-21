@@ -5,23 +5,13 @@
     android:tag="@string/sleep_punch_tag"
     tools:context="com.hardikgoswami.bettersleep.SleepPunch.SleepPunchFragment"
     android:background="@color/colorPrimary">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:text="@string/sleep_debt_date"
-        android:id="@+id/sleep_debt_tv_date"
-        />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/sleep_debt_counter_description"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/sleep_debt_tv_date"
         />
-
     <com.hardikgoswami.bettersleep.SleepPunch.DebtCounterView
         android:id="@+id/dbtCounter"
         android:layout_width="wrap_content"
@@ -32,7 +22,6 @@
         android:layout_below="@+id/sleep_debt_tv_date"
         android:textColor="@color/white"
         />
-
     <Button
         android:id="@+id/sleep_punch_btn"
         android:layout_width="wrap_content"
@@ -42,7 +31,6 @@
         android:text="@string/punchin_text_btn"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_alignParentBottom="true"/>
-
     <Button
         android:id="@+id/yognidra_navigate_btn"
         android:layout_width="wrap_content"
