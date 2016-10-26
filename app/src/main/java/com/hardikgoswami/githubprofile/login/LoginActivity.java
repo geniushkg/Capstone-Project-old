@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hardikgoswami.githubprofile.BuildConfig;
 import com.hardikgoswami.githubprofile.R;
-import com.hardikgoswami.githubprofile.login.oauth.OauthFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,8 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     public static String url = OAUTH_URL + "?client_id=" + CLIENT_ID ;;
 
     private Button mLoginButton;
-    private Dialog mAuthDialog;
-    private WebView mWebView;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // start login dialog
-                showDialog();
+
             }
         });
 
@@ -80,16 +78,6 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("URI=" + uri);
         Log.d(TAG,"uri data is : "+ uri);
         //// TODO: 10/26/2016 Authenticate with firebase and use code for getting token 
-    }
-
-    //Display the oAuth web page in a dialog
-    void showDialog() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        OauthFragment newFragment = new OauthFragment();
-        newFragment.show(ft, "dialog");
     }
 
     @Override
