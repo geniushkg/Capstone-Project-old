@@ -17,6 +17,7 @@ android {
         }
         all {
             buildConfigField 'String', 'CLIENT_ID', GITHUB_CLIENT
+            buildConfigField 'String', 'CLIENT_SECRET', GITHUB_SECRET
         }
     }
 }
@@ -30,6 +31,7 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:9.8.0'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
