@@ -12,4 +12,5 @@
     <dimen name="login_dialog_width">320dp</dimen>
     <dimen name="login_btn_height">400dp</dimen>
     <dimen name="login_dialog_height">400dp</dimen>
+    <dimen name="nav_image_width">344dp</dimen>
 </resources>
