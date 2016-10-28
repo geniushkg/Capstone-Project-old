@@ -1,5 +1,7 @@
 package com.hardikgoswami.githubprofile.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,18 +17,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.auth.api.model.GetTokenResponse;
 import com.hardikgoswami.githubprofile.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private SharedPreferences sharedprefernce;
+    String token ;
+    String email;
+    String imageUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +43,10 @@ public class SearchActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // firebase user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        sharedprefernce = getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        token = sharedprefernce.getString("token",null);
+        email =  sharedprefernce.getString("email",null);
+        imageUrl = sharedprefernce.getString("imageUrl",null);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +56,21 @@ public class SearchActivity extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        ImageView profileImage =  (ImageView) navigationView.findViewById(R.id.imageView);
+        TextView profileEmail = (TextView) navigationView.findViewById(R.id.textView);
+        if(profileEmail != null && profileImage != null){
+            profileEmail.setText(email);
+            Picasso.with(SearchActivity.this)
+                    .load(imageUrl)
+                    .into(profileImage);
+        }
         navigationView.setNavigationItemSelectedListener(this);
     }
 
