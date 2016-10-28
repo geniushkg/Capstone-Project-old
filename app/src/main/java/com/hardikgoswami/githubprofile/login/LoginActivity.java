@@ -1,6 +1,8 @@
 package com.hardikgoswami.githubprofile.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GithubAuthProvider;
 import com.hardikgoswami.githubprofile.BuildConfig;
 import com.hardikgoswami.githubprofile.R;
-import com.hardikgoswami.githubprofile.home.HomeActivity;
 import com.hardikgoswami.githubprofile.home.SearchActivity;
 
 import org.json.JSONException;
@@ -96,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    saveUserData(user.getEmail(),user.getPhotoUrl().toString());
                     navigateToUserHome();
                     // navigate to home activity
                 } else {
@@ -108,6 +110,26 @@ public class LoginActivity extends AppCompatActivity {
         };
 
     }
+
+    private void saveUserData(String email, String photoUrl) {
+    // save user email and photourl
+        SharedPreferences sharedpreferences = getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("email", email);
+        editor.putString("imageUrl",photoUrl);
+        editor.commit();
+    }
+
+
+    private void storUserToken(String token) {
+        // store token to share preference
+        SharedPreferences sharedpreferences = getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("token", token);
+        editor.commit();
+    }
+
+
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -144,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                    String responseData = response.body().string();
                    JSONObject json = new JSONObject(responseData);
                    String token = json.getString("access_token");
+                   storUserToken(token);
                    authWithFirebase(token);
                }catch (JSONException jExcep){
                    Log.d(TAG,"json exeption :"+jExcep.getMessage());
@@ -152,6 +175,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
 
     private void authWithFirebase(String token) {
         AuthCredential credential = GithubAuthProvider.getCredential(token);

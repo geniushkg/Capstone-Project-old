@@ -20,6 +20,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_search"
-        app:menu="@menu/search_act_drawer" />
+        app:menu="@menu/drawer" />
 
 </android.support.v4.widget.DrawerLayout>
