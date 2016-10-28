@@ -24,6 +24,7 @@ import com.google.firebase.auth.GithubAuthProvider;
 import com.hardikgoswami.githubprofile.BuildConfig;
 import com.hardikgoswami.githubprofile.R;
 import com.hardikgoswami.githubprofile.home.HomeActivity;
+import com.hardikgoswami.githubprofile.home.SearchActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -176,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navigateToUserHome(){
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

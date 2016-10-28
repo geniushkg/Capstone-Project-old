@@ -10,4 +10,10 @@
     <string name="logout">Logout</string>
     <string name="open_drawer">Open</string>
     <string name="close_drawer">Close</string>
+    <string name="title_activity_search">Github Metrics</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
