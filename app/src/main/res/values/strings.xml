@@ -8,4 +8,6 @@
     <string name="home">Home</string>
     <string name="favourite">Feedback</string>
     <string name="logout">Logout</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
 </resources>

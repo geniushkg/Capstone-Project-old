@@ -10,7 +10,7 @@
                 android:title="@string/home"/>
 
             <item
-                android:id="@+id/drawer_favourite"
+                android:id="@+id/drawer_feedback"
                 android:icon="@drawable/customer"
                 android:title="@string/favourite"/>
 
