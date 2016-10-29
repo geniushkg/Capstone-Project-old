@@ -15,7 +15,7 @@
                 android:title="@string/favourite"/>
 
             <item
-                android:id="@+id/drawer_settings"
+                android:id="@+id/drawer_logout"
                 android:icon="@drawable/logout"
                 android:title="@string/logout"/>
         </group>

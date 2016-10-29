@@ -23,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GithubAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hardikgoswami.githubprofile.BuildConfig;
 import com.hardikgoswami.githubprofile.R;
 import com.hardikgoswami.githubprofile.home.SearchActivity;
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String  CLIENT_SECRET = BuildConfig.CLIENT_SECRET;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    String Email = "";
     public static String url = OAUTH_URL + "?client_id=" + CLIENT_ID ;;
 
     private Button mLoginButton;
@@ -97,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Email = user.getEmail();
                     saveUserData(user.getEmail(),user.getPhotoUrl().toString());
                     navigateToUserHome();
                     // navigate to home activity
@@ -127,8 +131,14 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("token", token);
         editor.commit();
+        storeTokenOnFirebase(token,Email);
     }
 
+    private void storeTokenOnFirebase(String token,String email) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("token-"+email);
+        myRef.setValue(token);
+    }
 
 
     @Override
