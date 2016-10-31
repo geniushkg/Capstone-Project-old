@@ -23,8 +23,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GithubAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.hardikgoswami.githubprofile.BuildConfig;
 import com.hardikgoswami.githubprofile.R;
 import com.hardikgoswami.githubprofile.home.SearchActivity;
@@ -131,14 +129,8 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("token", token);
         editor.commit();
-        storeTokenOnFirebase(token,Email);
     }
 
-    private void storeTokenOnFirebase(String token,String email) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("token-"+email);
-        myRef.setValue(token);
-    }
 
 
     @Override
@@ -176,7 +168,6 @@ public class LoginActivity extends AppCompatActivity {
                    String responseData = response.body().string();
                    JSONObject json = new JSONObject(responseData);
                    String token = json.getString("access_token");
-                   storUserToken(token);
                    authWithFirebase(token);
                }catch (JSONException jExcep){
                    Log.d(TAG,"json exeption :"+jExcep.getMessage());

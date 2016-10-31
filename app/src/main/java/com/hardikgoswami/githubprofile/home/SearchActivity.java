@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -35,6 +36,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "GITHUBMETRICS";
     private SharedPreferences sharedprefernce;
     String token ;
     String email;
@@ -73,6 +75,8 @@ public class SearchActivity extends AppCompatActivity
             Picasso.with(SearchActivity.this)
                     .load(imageUrl)
                     .into(profileImage);
+        }else{
+            Log.d(TAG,"view null error");
         }
         navigationView.setNavigationItemSelectedListener(this);
     }
