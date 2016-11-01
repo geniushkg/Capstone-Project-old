@@ -1,6 +1,7 @@
 package com.hardikgoswami.githubmetrics.Login;
 
 import android.graphics.Bitmap;
+import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -96,21 +97,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         url.addQueryParameter("client_secret", CLIENT_SECRET);
         url.addQueryParameter("code", s);
         String url_oauth = url.build().toString();
-        Request request = new Request.Builder()
+        final Request request = new Request.Builder()
                 .header("Accept", "application/json")
                 .url(url_oauth)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                
+
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                if(response.isSuccessful()){
+                    String JsonData = response.body().string();
+                    try {
+                       JSONObject jsonObject = new JSONObject(JsonData);
+                        String auth_token = jsonObject.getString("access_token");
+                        progresview.setVisibility(View.INVISIBLE);
+                        tv_web.setText("Token found : "+auth_token);
+                    }catch (JSONException exp){
+                        Log.d(TAG,"json exception :"+exp.getMessage());
+                    }
+
+                }
 
             }
         });
+    }
+
+    public static void storeTokenAndAuthenticateWithFirebase(String token){
+
     }
 
 }
