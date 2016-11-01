@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GithubMetrics</string>
+    <string name="app_name_image">Github Metrics logo</string>
+    <string name="app_tagline">An Easy non-tedious way to evaluate developers github profile</string>
+    <string name="btn_login_txt">Login with github</string>
 </resources>

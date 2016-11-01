@@ -4,5 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_login_image_dimen">128dp</dimen>
     <dimen name="login_activity_image_margin_top">146dp</dimen>
+    <dimen name="font_size_app_name_login">22sp</dimen>
+    <dimen name="activity_login_tagline_width">280dp</dimen>
+    <dimen name="btn_login_bottom_margin">128dp</dimen>
 
 </resources>

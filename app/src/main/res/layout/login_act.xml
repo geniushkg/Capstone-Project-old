@@ -13,14 +13,35 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/login_activity_image_margin_top"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/app_name_image" />
 
     <TextView
+        android:id="@+id/tv_appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_login_logo"
         android:layout_centerHorizontal="true"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/font_size_app_name_login"/>
+    <TextView
+        android:layout_width="@dimen/activity_login_tagline_width"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_app_tagline"
+        android:layout_below="@+id/tv_appname"
+        android:text="@string/app_tagline"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:layout_width="@dimen/activity_login_tagline_width"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login_txt"
+        android:id="@+id/btn_login"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/btn_login_bottom_margin"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"/>
 </RelativeLayout>
