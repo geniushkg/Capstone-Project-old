@@ -7,5 +7,6 @@
     <dimen name="font_size_app_name_login">22sp</dimen>
     <dimen name="activity_login_tagline_width">280dp</dimen>
     <dimen name="btn_login_bottom_margin">128dp</dimen>
+    <dimen name="font_size_webview">18sp</dimen>
 
 </resources>

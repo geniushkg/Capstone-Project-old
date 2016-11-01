@@ -1,15 +1,15 @@
 package com.hardikgoswami.githubmetrics.Login;
 
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hardikgoswami.githubmetrics.BuildConfig;
@@ -26,12 +26,27 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = LoginActivity.class.getSimpleName();
     Button btn_login;
     public static final String CLIENT_ID = BuildConfig.GITHUB_ID;
-    public static final String CLIENT_SECRET=BuildConfig.GITHUB_SECRET;
-    public static final String CODE = "";
+    public static final String CLIENT_SECRET = BuildConfig.GITHUB_SECRET;
+    public static final String GITHUB_URL = "https://github.com/login/oauth/authorize";
+    public static final String GITHUB_OAUTH = "https://github.com/login/oauth/access_token";
+    public static String CODE = "";
+
+    WebView webview;
+    TextView tv_web;
+    com.rey.material.widget.ProgressView progresview;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,110 +59,58 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         setContentView(R.layout.webview);
-        final WebView webview = (WebView) findViewById(R.id.webview);
-        webview.loadUrl("https://github.com/login/oauth/authorize");
+        progresview = (com.rey.material.widget.ProgressView) findViewById(R.id.progress_view);
+        progresview.setVisibility(View.GONE);
+        webview = (WebView) findViewById(R.id.webview);
+        tv_web = (TextView) findViewById(R.id.tv_webview);
         webview.setWebViewClient(new WebViewClient() {
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                String fragment = "?code=";
-                int start = url.indexOf(fragment);
-                if (start > -1) {
-                    webview.stopLoading();
-                    final String code = url.substring(start+fragment.length(), url.length());
-                    // Remember, never run network processes within UI threads
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                super.shouldOverrideUrlLoading(view, url);
 
-                    // ...so we use asynctask instead
+                CODE = url.substring(url.lastIndexOf("?code=") + 1);
+                tv_web.setVisibility(View.VISIBLE);
+                tv_web.setText("Loading please wait");
+                String[] code = url.split("code=");
+                codeFromGithub(code[1]);
+                return false;
+            }
+        });
+        String url_load = GITHUB_URL + "?client_id=" + CLIENT_ID;
+        webview.loadUrl(url_load);
 
-                    final AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
-                        @Override
-                        protected String doInBackground(Void... p) {
-                            try {
-                                // Create the JSON parameters to send to Github
-                                JSONObject params = new JSONObject();
-                                params.put("client_id",BuildConfig.GITHUB_ID);
-                                params.put("client_secret", BuildConfig.GITHUB_SECRET);
-                                params.put("code", code);
+    }
 
-                                // Post
+    private void codeFromGithub(String s) {
+        progresview.setVisibility(View.VISIBLE);
+        Log.d(TAG, "code is:" + s);
+        webview.setVisibility(View.INVISIBLE);
+        tv_web.setText("Fetching token");
+        fetchOauthToken(s);
+    }
 
-                                String data = null;
-                                URL url = new URL("https://github.com/login/oauth/access_token");
-                                String body = params.toString();  byte[] bytes = body.getBytes();
-                                HttpURLConnection conn = null;
-                                try {
-                                    conn = (HttpURLConnection) url.openConnection();
-                                    conn.setDoOutput(true);
-                                    conn.setUseCaches(false);
-                                    conn.setFixedLengthStreamingMode(bytes.length);
-                                    conn.setRequestMethod("POST");
-                                    conn.setRequestProperty("Content-Type", "application/json");
-                                    conn.setRequestProperty("Accept", "application/json");
-                                    // Github requires a user agent header
+    private void fetchOauthToken(String s) {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder url = HttpUrl.parse(GITHUB_OAUTH).newBuilder();
+        url.addQueryParameter("client_id", CLIENT_ID);
+        url.addQueryParameter("client_secret", CLIENT_SECRET);
+        url.addQueryParameter("code", s);
+        String url_oauth = url.build().toString();
+        Request request = new Request.Builder()
+                .header("Accept", "application/json")
+                .url(url_oauth)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                
+            }
 
-                                    conn.setRequestProperty("User-Agent", "Github Metrics App");
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
 
-                                    OutputStream out = conn.getOutputStream();
-                                    out.write(bytes);
-                                    out.close();
-
-                                    InputStream is = null;
-                                    try {
-                                        is = conn.getInputStream();
-                                    }
-                                    catch (IOException e) {
-                                        //e.printStackTrace();
-
-                                        // Hack for 4xx http headers
-
-                                        is = conn.getErrorStream();
-                                    }
-
-                                    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-                                    StringBuffer response = new StringBuffer();
-                                    String line;
-                                    while((line = rd.readLine()) != null) {
-                                        response.append(line).append("\n");;
-                                    }
-                                    rd.close();
-                                    data = response.toString();
-                                } finally {
-                                    if (conn != null) {
-                                        conn.disconnect();
-                                    }
-                                }
-
-                                try {
-                                    JSONObject json = new JSONObject(data);
-                                    String token = json.getString("access_token");
-                                    Toast.makeText(getApplication(),"Token is : "+token,Toast.LENGTH_SHORT).show();
-                                    // TODO: 11/1/2016 save token to shared prerence
-
-                                    return null;
-                                } catch (JSONException e) {
-                                    // Log.e(TAG, e.getMessage());
-
-                                }
-                            }
-                            catch (IOException e) {
-                                // Log.e(TAG, e.getMessage());
-
-                            }
-                            catch (JSONException e) {
-                                // Log.e(TAG, e.getMessage());
-
-                            }
-
-                            return null;
-                        }
-
-                        @Override
-                        protected void onPostExecute(String s) {
-                            super.onPostExecute(s);
-
-                        }
-                    };
-                    task.execute();
-                }
             }
         });
     }
+
 }
