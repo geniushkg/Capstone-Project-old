@@ -16,9 +16,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        all{
-            buildConfigField 'String','GITHUB_ID',GITHUB_CLIENT
-            buildConfigField 'String','GITHUB_SECRET',GITHUB_SECRET
+        all {
+            buildConfigField 'String', 'GITHUB_ID', GITHUB_CLIENT
+            buildConfigField 'String', 'GITHUB_SECRET', GITHUB_SECRET
         }
     }
 }
@@ -31,5 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.android.support:design:23.4.0'
     testCompile 'junit:junit:4.12'
 }
