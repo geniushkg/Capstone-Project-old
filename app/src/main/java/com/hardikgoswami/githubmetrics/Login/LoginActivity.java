@@ -109,8 +109,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 }
             });
-
-
     }
 
     private void storeToSharedPreference(String auth_token) {

@@ -1,9 +1,9 @@
 package com.hardikgoswami.githubmetrics.Home;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +19,8 @@ import com.hardikgoswami.githubmetrics.R;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +28,14 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("github_prefs",MODE_PRIVATE);
-        final String tokenFetched = sharedPreferences.getString("oauth_token",null);
+        SharedPreferences sharedPreferences = getSharedPreferences("github_prefs", MODE_PRIVATE);
+        final String tokenFetched = sharedPreferences.getString("oauth_token", null);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Oauth Token is :"+tokenFetched, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
 
@@ -46,6 +47,13 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        progress = ProgressDialog.show(this, "Loading",
+                "Authentication sucessfull , please wait", true);
+        authenticWithFirebase(tokenFetched);
+    }
+
+    private void authenticWithFirebase(String tokenFetched) {
+
     }
 
     @Override
