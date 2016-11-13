@@ -32,5 +32,9 @@ dependencies {
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.google.firebase:firebase-core:9.8.0'
+
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'com.google.gms.google-services'
