@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GithubMetrics</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="tagline">An Easy non-Tedious way to evaluate developer\'s github profile</string>
+    <string name="login">Login With Github</string>
+</resources>

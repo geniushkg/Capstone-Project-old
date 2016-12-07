@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hardikgoswami.githubmetrics.login.LoginGithubActivity">
+
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marginLogoTop"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/ivLogo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvLabelAppName"
+        android:text="@string/app_name"
+        android:textSize="32sp"
+        android:layout_below="@id/ivLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marginLabelTop"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/tagline"
+        android:textAlignment="center"
+        android:id="@+id/tvTagline"
+        android:layout_below="@+id/tvLabelAppName"/>
+    <Button
+        android:layout_width="@dimen/loginbtn_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin40dp"
+        android:layout_below="@id/tvTagline"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/btnLogin"/>
+
+</RelativeLayout>
