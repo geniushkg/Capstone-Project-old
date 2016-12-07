@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "64097234877",
+    "firebase_url": "https://githubmetrics.firebaseio.com",
+    "project_id": "githubmetrics",
+    "storage_bucket": "githubmetrics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64097234877:android:d66c85cc818849e7",
+        "android_client_info": {
+          "package_name": "com.hardikgoswami.githubmetrics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64097234877-c9bfr9gbrdnedckphabal82hu87ohqbb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hardikgoswami.githubmetrics",
+            "certificate_hash": "342C61C031F595DB6D960C837C23F19D05734B69"
+          }
+        },
+        {
+          "client_id": "64097234877-6g40ep55bepb4qovdi8qjpj5c59p5qup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIFX0SxE20Uhq5P_7CBvY0Nmb_BuRzg-s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64097234877-6g40ep55bepb4qovdi8qjpj5c59p5qup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
