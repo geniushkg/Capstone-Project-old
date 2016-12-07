@@ -1,8 +1,10 @@
 package com.hardikgoswami.githubmetrics.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,13 +19,20 @@ import com.hardikgoswami.githubmetrics.R;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static final String TAG = "GithubMetrics";
+    SharedPreferences sharedPreferences;
+    public static final String PREFERENCE = "github_prefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sharedPreferences = getSharedPreferences(PREFERENCE, 0);
+        String oauthToken = sharedPreferences.getString("oauth_token", null);
+        Log.d(TAG, "oauth token for github loged in user is :" + oauthToken);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
