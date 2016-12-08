@@ -1,40 +1,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hardikgoswami.githubmetrics.search.SearchFragment">
+
     <LinearLayout
+        android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="10">
+
         <EditText
+            android:id="@+id/etGithubUser"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:layout_height="wrap_content"
-            android:hint="@string/username_hint"
-            />
+            android:hint="@string/username_hint" />
+
         <Button
+            android:id="@+id/btnSearch"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_search_black_24dp"/>
+            android:layout_weight="2"
+            android:background="@drawable/ic_search_black_24dp" />
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llSearch">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewUserDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/cv_margin"
+                android:elevation="@dimen/cardview_default_elevation">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivAvatarCvUserDetail"
+                        android:layout_width="@dimen/cvUserImageWidth"
+                        android:layout_height="@dimen/cvUserImageWidth" />
+
+                    <TextView
+                        android:id="@+id/tvLocationCvUserDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivAvatarCvUserDetail"
+                        android:hint="@string/hint_location" />
+
+                    <TextView
+                        android:layout_width="@dimen/biolabelWidth"
+                        android:hint="@string/hint_bio"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvBioCvUserDetail"
+                        android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
+                        android:layout_margin="@dimen/fab_margin"/>
+
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
 
+            <com.github.javierugarte.GitHubContributionsView
+                android:id="@+id/github_contributions_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fab_margin"
+                app:baseColor="@color/colorAccent"
+                app:baseEmptyColor="#0FFF4081"
+                app:displayMonth="true"
+                app:textColor="@color/colorPrimary" />
+
+
         </LinearLayout>
-
-
     </ScrollView>
 </RelativeLayout>

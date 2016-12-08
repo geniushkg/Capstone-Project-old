@@ -15,4 +15,8 @@
     <dimen name="feedbackLabelFontSize">18sp</dimen>
     <dimen name="profileImageWidth">56dp</dimen>
     <dimen name="historyRecyclerViewMarginTop">56dp</dimen>
+    <dimen name="cvUserImageWidth">86dp</dimen>
+    <dimen name="cvUserImageHeight">136dp</dimen>
+    <dimen name="cv_margin">8dp</dimen>
+    <dimen name="biolabelWidth">120dp</dimen>
 </resources>
