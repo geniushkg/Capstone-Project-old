@@ -24,4 +24,6 @@
 <pre>Hello User , <br />I hope you found this app usefull, I invite you to share you precious feedback,<br /> queries, new feature request, etc.<br/>Thanks.<br />Hardik Goswami,Developer.</pre>
         ]]>
     </string>
+    <string name="candidate_history">History</string>
+    <string name="username_hint">Enter Github Username</string>
 </resources>

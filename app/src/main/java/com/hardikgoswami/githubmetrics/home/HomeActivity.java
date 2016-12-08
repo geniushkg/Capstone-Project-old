@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.hardikgoswami.githubmetrics.R;
 import com.hardikgoswami.githubmetrics.feedback.FeedbackFragment;
 import com.hardikgoswami.githubmetrics.history.HistoryFragment;
 import com.hardikgoswami.githubmetrics.search.SearchFragment;
+import com.squareup.picasso.Picasso;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -36,6 +38,7 @@ public class HomeActivity extends AppCompatActivity
     public static final String NAME = "Name";
     public static final String EMAIL = "Email";
     public static final String LOGIN = "Login";
+    public static final String IMG_URL = "ImageUrl";
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -72,6 +75,9 @@ public class HomeActivity extends AppCompatActivity
                     }
                     if (user.getEmail() != null) {
                         editor.putString(EMAIL, user.getEmail());
+                    }
+                    if (user.getPhotoUrl()!=null){
+                        editor.putString(IMG_URL,user.getPhotoUrl().toString());
                     }
                     editor.commit();
                 } else {
@@ -122,6 +128,20 @@ public class HomeActivity extends AppCompatActivity
             TextView email = (TextView)headerView.findViewById(R.id.tvNavHeaderEmail);
             String fetchedEmail = sharedPreferences.getString(EMAIL,null);
             if (fetchedEmail!= null) email.setText(fetchedEmail);
+
+            ImageView ivProfileImage =(ImageView) headerView.findViewById(R.id.imageViewNavigationProfile);
+            if (ivProfileImage!=null){
+                String profileUrl = sharedPreferences.getString(IMG_URL,null);
+                Log.d(TAG, "onCreate: profile image url : "+profileUrl);
+                profileUrl = profileUrl + "&s=50";
+                if (profileUrl!=null) {
+                    Picasso.with(this)
+                            .load(profileUrl)
+                            .into(ivProfileImage);
+                }
+            }else {
+                Log.d(TAG, "onCreate: profileview null");
+            }
         }
         getSupportFragmentManager()
                 .beginTransaction()

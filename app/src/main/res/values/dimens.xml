@@ -13,4 +13,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="feedbackLabelWidth">220dp</dimen>
     <dimen name="feedbackLabelFontSize">18sp</dimen>
+    <dimen name="profileImageWidth">56dp</dimen>
+    <dimen name="historyRecyclerViewMarginTop">56dp</dimen>
 </resources>
