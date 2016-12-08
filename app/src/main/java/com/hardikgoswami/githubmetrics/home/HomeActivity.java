@@ -63,14 +63,15 @@ public class HomeActivity extends AppCompatActivity
                     if (user != null) {
                         // User is signed in
                         Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                        sharedPreferences.edit().putBoolean(LOGIN, true);
+                        SharedPreferences.Editor editor =  sharedPreferences.edit();
+                        editor.putBoolean(LOGIN,true);
                         if (user.getDisplayName() != null) {
-                            sharedPreferences.edit().putString(NAME, user.getDisplayName());
+                            editor.putString(NAME, user.getDisplayName());
                         }
                         if (user.getEmail() != null) {
-                            sharedPreferences.edit().putString(EMAIL, user.getEmail());
+                            editor.putString(EMAIL, user.getEmail());
                         }
-                        sharedPreferences.edit().commit();
+                        editor.commit();
                     } else {
                         // User is signed out
                         Log.d(TAG, "onAuthStateChanged:signed_out");

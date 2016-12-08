@@ -18,21 +18,26 @@ public class LoginGithubActivity extends AppCompatActivity {
 
     public static final String GIT_CLIENT = BuildConfig.GITHUB_CLIENT;
     public static final String GIT_SECRET = BuildConfig.GITHUB_SECRET;
-    public static final String PREF ="GithubMetricsPrefs";
     private static final String LOGIN = "Login" ;
     public static final String TAG = "GithubMetrics";
+    public static final String PREFERENCE = "github_prefs";
     Button loginBtn;
     Context mContext;
     SharedPreferences sharedPreferences;
+    String oauthToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_github);
         mContext = this;
-        sharedPreferences = getSharedPreferences(PREF,MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREFERENCE, 0);
+        oauthToken = sharedPreferences.getString("oauth_token", null);
+        Log.d(TAG, "oauth token for github loged in user is :" + oauthToken);
+
+        sharedPreferences = getSharedPreferences(PREFERENCE,MODE_PRIVATE);
         boolean isLogged = sharedPreferences.getBoolean(LOGIN,false);
-        if (isLogged){
+        if (oauthToken!=null){
             //user already logged in
             Intent intent = new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
