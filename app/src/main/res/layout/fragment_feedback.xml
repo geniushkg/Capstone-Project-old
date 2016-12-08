@@ -6,11 +6,14 @@
 
     <TextView
         android:id="@+id/tvFeedback"
-        android:layout_width="@dimen/feedbackLabelWidth"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/twentydp"
+        android:layout_marginEnd="@dimen/twentydp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/fab_margin"
-        android:textSize="@dimen/feedbackLabelFontSize" />
+        android:textSize="@dimen/feedbackLabelFontSize"
+        android:textAlignment="center"/>
 
     <Button
         android:id="@+id/btnSendFeedBack"

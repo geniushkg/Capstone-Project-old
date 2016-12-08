@@ -29,4 +29,7 @@
     <string name="hint_location">Location</string>
     <string name="hint_bio">This is bio textview hint , users bio will be displayed here , how awesome developer is ?</string>
     <string name="hint_email">dummyemail@email.moc</string>
+    <string name="rating_label">Ratings are : -</string>
+    <string name="hint_contributionThisYear">Contributions in this year : -</string>
+    <string name="hint_numOfFollowers">Follwers :-</string>
 </resources>
