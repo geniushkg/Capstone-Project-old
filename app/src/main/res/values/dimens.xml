@@ -17,6 +17,9 @@
     <dimen name="historyRecyclerViewMarginTop">56dp</dimen>
     <dimen name="cvUserImageWidth">86dp</dimen>
     <dimen name="cvUserImageHeight">136dp</dimen>
-    <dimen name="cv_margin">8dp</dimen>
-    <dimen name="biolabelWidth">120dp</dimen>
+    <dimen name="cv_margin">4dp</dimen>
+    <dimen name="biolabelWidth">220dp</dimen>
+    <dimen name="tendp">10dp</dimen>
+    <dimen name="seventydp">70dp</dimen>
+    <dimen name="ninetydp">90dp</dimen>
 </resources>

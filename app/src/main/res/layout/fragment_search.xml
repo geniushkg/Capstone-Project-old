@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,7 @@
         android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:weightSum="10">
 
         <EditText
@@ -60,26 +62,35 @@
                         android:hint="@string/hint_location" />
 
                     <TextView
-                        android:layout_width="@dimen/biolabelWidth"
-                        android:hint="@string/hint_bio"
-                        android:layout_height="wrap_content"
                         android:id="@+id/tvBioCvUserDetail"
+                        android:layout_width="@dimen/biolabelWidth"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fab_margin"
                         android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
-                        android:layout_margin="@dimen/fab_margin"/>
+                        android:hint="@string/hint_bio" />
 
+                    <TextView
+                        android:id="@+id/tvEmailCvUserDetail"
+                        android:layout_width="@dimen/biolabelWidth"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvBioCvUserDetail"
+                        android:layout_margin="@dimen/cv_margin"
+                        android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
+                        android:hint="@string/hint_email" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
-            <com.github.javierugarte.GitHubContributionsView
-                android:id="@+id/github_contributions_view"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fab_margin"
-                app:baseColor="@color/colorAccent"
-                app:baseEmptyColor="#0FFF4081"
-                app:displayMonth="true"
-                app:textColor="@color/colorPrimary" />
+                android:layout_margin="@dimen/cv_margin"
+                android:elevation="@dimen/cardview_default_elevation">
 
+                <com.github.javierugarte.GitHubContributionsView
+                    android:id="@+id/github_contributions_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
     </ScrollView>

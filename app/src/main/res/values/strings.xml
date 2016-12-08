@@ -28,4 +28,5 @@
     <string name="username_hint">Enter Github Username</string>
     <string name="hint_location">Location</string>
     <string name="hint_bio">This is bio textview hint , users bio will be displayed here , how awesome developer is ?</string>
+    <string name="hint_email">dummyemail@email.moc</string>
 </resources>
