@@ -18,4 +18,10 @@
     <string name="search">Search</string>
     <string name="history">History</string>
     <string name="feedback">Feedback</string>
+    <string name="btnFeedback">Send Feedback</string>
+    <string name="feedbackLabelText">
+        <![CDATA[
+<pre>Hello User , <br />I hope you found this app usefull, I invite you to share you precious feedback,<br /> queries, new feature request, etc.<br/>Thanks.<br />Hardik Goswami,Developer.</pre>
+        ]]>
+    </string>
 </resources>

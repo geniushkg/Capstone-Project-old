@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     tools:context="com.hardikgoswami.githubmetrics.feedback.FeedbackFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvFeedback"
+        android:layout_width="@dimen/feedbackLabelWidth"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:textSize="@dimen/feedbackLabelFontSize" />
+
+    <Button
+        android:id="@+id/btnSendFeedBack"
+        android:layout_width="@dimen/loginbtn_width"
+        android:layout_height="wrap_content"
+        android:text="@string/btnFeedback"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        />
 
 </FrameLayout>

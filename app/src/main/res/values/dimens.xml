@@ -11,4 +11,6 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="feedbackLabelWidth">220dp</dimen>
+    <dimen name="feedbackLabelFontSize">18sp</dimen>
 </resources>
