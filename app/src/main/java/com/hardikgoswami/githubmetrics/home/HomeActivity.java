@@ -4,9 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GithubAuthProvider;
 import com.hardikgoswami.githubmetrics.R;
+import com.hardikgoswami.githubmetrics.feedback.FeedbackFragment;
+import com.hardikgoswami.githubmetrics.history.HistoryFragment;
+import com.hardikgoswami.githubmetrics.search.SearchFragment;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -54,59 +56,52 @@ public class HomeActivity extends AppCompatActivity
         oauthToken = sharedPreferences.getString("oauth_token", null);
         Log.d(TAG, "oauth token for github loged in user is :" + oauthToken);
 
-            //firebase setup user login setup
-            mAuth = FirebaseAuth.getInstance();
-            mAuthListener = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if (user != null) {
-                        // User is signed in
-                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                        SharedPreferences.Editor editor =  sharedPreferences.edit();
-                        editor.putBoolean(LOGIN,true);
-                        if (user.getDisplayName() != null) {
-                            editor.putString(NAME, user.getDisplayName());
-                        }
-                        if (user.getEmail() != null) {
-                            editor.putString(EMAIL, user.getEmail());
-                        }
-                        editor.commit();
-                    } else {
-                        // User is signed out
-                        Log.d(TAG, "onAuthStateChanged:signed_out");
-                    }
-                }
-            };
-
-            if (!sharedPreferences.getBoolean(LOGIN,false)) {
-                //exchange oauth token with firebase and login user
-                String token = oauthToken;
-                AuthCredential credential = GithubAuthProvider.getCredential(token);
-                mAuth.signInWithCredential(credential)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                                // display error for siginfails , for succesfull signin handle login in listener
-                                if (!task.isSuccessful()) {
-                                    Log.d(TAG, "signInWithCredential", task.getException());
-                                    Toast.makeText(HomeActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }else {
-                //user credentail available, already logged in.
-            }
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //firebase setup user login setup
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(LOGIN, true);
+                    if (user.getDisplayName() != null) {
+                        editor.putString(NAME, user.getDisplayName());
+                    }
+                    if (user.getEmail() != null) {
+                        editor.putString(EMAIL, user.getEmail());
+                    }
+                    editor.commit();
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
             }
-        });
+        };
+
+        if (!sharedPreferences.getBoolean(LOGIN, false)) {
+            //exchange oauth token with firebase and login user
+            String token = oauthToken;
+            AuthCredential credential = GithubAuthProvider.getCredential(token);
+            mAuth.signInWithCredential(credential)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+                            // display error for siginfails , for succesfull signin handle login in listener
+                            if (!task.isSuccessful()) {
+                                Log.d(TAG, "signInWithCredential", task.getException());
+                                Toast.makeText(HomeActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "Please check internet connectivity", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        } else {
+            //user credentail available, already logged in.
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -117,10 +112,21 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //update navigation view as per user details
+        View headerView = navigationView.getHeaderView(0);
+        if (headerView!=null){
+            TextView name = (TextView)headerView.findViewById(R.id.tvNavHeaderName);
+            String fetchedName =  sharedPreferences.getString(NAME,null);
+            if (fetchedName!= null) name.setText(fetchedName);
 
-
-
-
+            TextView email = (TextView)headerView.findViewById(R.id.tvNavHeaderEmail);
+            String fetchedEmail = sharedPreferences.getString(EMAIL,null);
+            if (fetchedEmail!= null) email.setText(fetchedEmail);
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_home, new SearchFragment())
+                .commit();
     }
 
     @Override
@@ -164,21 +170,26 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        switch (id) {
+            case R.id.nav_search:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_home, new SearchFragment())
+                        .commit();
+                break;
+            case R.id.nav_history:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_home, new HistoryFragment())
+                        .commit();
+                break;
+            case R.id.nav_feedback:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_home, new FeedbackFragment())
+                        .commit();
+                break;
+            default:
+                Log.d(TAG, "onNavigationItemSelected: default case executed");
+                break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
