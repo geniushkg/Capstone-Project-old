@@ -128,7 +128,13 @@
                      android:id="@+id/tvFollowersGitDetail"
                      android:layout_toRightOf="@+id/tvContributionGitDetail"
                      android:hint="@string/hint_numOfFollowers"
-                     />   
+                     />
+                  <android.support.v7.widget.RecyclerView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/rvSearchFragReposHeight"
+                      android:id="@+id/rvReposContribution"
+                      android:layout_margin="@dimen/cv_margin"
+                      android:layout_below="@id/tvFollowersGitDetail"/>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 

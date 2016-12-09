@@ -24,4 +24,5 @@
     <dimen name="seventydp">70dp</dimen>
     <dimen name="ninetydp">90dp</dimen>
     <dimen name="twentydp">20dp</dimen>
+    <dimen name="rvSearchFragReposHeight">280dp</dimen>
 </resources>
