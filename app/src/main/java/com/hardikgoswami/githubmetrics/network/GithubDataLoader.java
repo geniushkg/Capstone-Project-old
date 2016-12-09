@@ -9,12 +9,17 @@ import android.content.Context;
 
 public class GithubDataLoader extends AsyncTaskLoader<UserData> {
 
+    private UserData data;
+
     public GithubDataLoader(Context context) {
         super(context);
     }
 
     @Override
     public UserData loadInBackground() {
-        return null;
+        data = new UserData();
+
+
+        return data;
     }
 }
