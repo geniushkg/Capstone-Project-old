@@ -7,10 +7,15 @@ package com.hardikgoswami.githubmetrics.network;
 public class Contribution {
     private String nameOfRepo;
     private int stars;
+    private boolean fork;
+    public Contribution() {
+    }
 
-    public Contribution(String nameOfRepo, int stars) {
+
+    public Contribution(String nameOfRepo, int stars, boolean fork) {
         this.nameOfRepo = nameOfRepo;
         this.stars = stars;
+        this.fork = fork;
     }
 
     public String getNameOfRepo() {
@@ -29,6 +34,12 @@ public class Contribution {
         this.stars = stars;
     }
 
-    public Contribution() {
+    public boolean isFork() {
+        return fork;
     }
+
+    public void setFork(boolean fork) {
+        this.fork = fork;
+    }
+
 }

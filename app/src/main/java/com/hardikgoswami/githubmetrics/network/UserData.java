@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class UserData {
+
     private String location;
     private String bio;
     private String imageUrl;
