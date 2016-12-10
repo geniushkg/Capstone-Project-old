@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'myalias'
+            keyPassword 'mypassword'
+            storeFile file('mykeystore.jks')
+            storePassword 'mypassword'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     defaultConfig {
@@ -10,6 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,14 +28,18 @@ android {
         all {
             buildConfigField 'String', 'GITHUB_SECRET', GITHUB_SECRET
             buildConfigField 'String', 'GITHUB_CLIENT', GITHUB_CLIENT
-            buildConfigField 'String', 'DOORBELL_KEY' , doorbell
-            buildConfigField 'int', 'DOORBELL_ID' , doorbell_id
+            buildConfigField 'String', 'DOORBELL_KEY', doorbell
+            buildConfigField 'int', 'DOORBELL_ID', doorbell_id
         }
+    }
+
+    configurations {
+        all*.exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 }
 
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -42,6 +55,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
