@@ -33,4 +33,5 @@
     <string name="hint_contributionThisYear">Contributions in this year : -</string>
     <string name="hint_numOfFollowers">Follwers :-</string>
     <string name="labelPopularRepos">Popular Repositories of this user.</string>
+    <string name="refresh">Refresh</string>
 </resources>
