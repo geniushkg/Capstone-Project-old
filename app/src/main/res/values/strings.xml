@@ -21,7 +21,7 @@
     <string name="btnFeedback">Send Feedback</string>
     <string name="feedbackLabelText">
         <![CDATA[
-<pre>Hello User , <br />I hope you found this app usefull,<br/> I invite you to share you precious feedback,queries, new feature request, etc.<br/>Thanks.<br />Hardik Goswami,Developer.</pre>
+<pre>Hello User , <br />I hope you found this app usefull,<br/> I invite you to share you precious feedback,queries, new feature request, etc.<br/>Thanks.<br/>Hardik Goswami,<br/>Developer.</pre>
         ]]>
     </string>
     <string name="candidate_history">History</string>

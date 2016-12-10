@@ -24,7 +24,7 @@ public class StarsSorter implements Comparator<Contribution> {
         }else {
             returnValue = 0;
         }
-        Log.d(TAG, "compare: collection soring");
+        Log.d(TAG, "compare: collection sorting");
         return returnValue;
     }
 }

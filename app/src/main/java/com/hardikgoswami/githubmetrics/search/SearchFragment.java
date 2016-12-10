@@ -2,7 +2,9 @@ package com.hardikgoswami.githubmetrics.search;
 
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -24,6 +26,7 @@ import com.hardikgoswami.githubmetrics.R;
 import com.hardikgoswami.githubmetrics.network.Contribution;
 import com.hardikgoswami.githubmetrics.network.GithubDataLoader;
 import com.hardikgoswami.githubmetrics.network.UserData;
+import com.hardikgoswami.githubmetrics.persistence.HistoryContract;
 import com.hardikgoswami.githubmetrics.util.ReposAdapter;
 import com.hardikgoswami.githubmetrics.util.SimpleDividerItemDecoration;
 import com.hardikgoswami.githubmetrics.util.StarsSorter;
@@ -59,7 +62,6 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
     private RecyclerView repoListRv;
     private View linearCardView;
     private ReposAdapter adapter;
-    private ProgressDialog progressDialog;
     private LoaderManager.LoaderCallbacks<UserData> Loadercallbacks;
 
     @Override
@@ -67,9 +69,6 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setIndeterminate(true);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         linearCardView = rootView.findViewById(R.id.llCards);
         tvBio = (TextView) rootView.findViewById(R.id.tvBioCvUserDetail);
         tvEmail = (TextView) rootView.findViewById(R.id.tvEmailCvUserDetail);
@@ -102,7 +101,6 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
                     linearCardView.setVisibility(View.VISIBLE);
                     Bundle bundle = new Bundle();
                     bundle.putString(USERNAME, searchedUser);
-                    progressDialog.show();
                     getLoaderManager().restartLoader(0, bundle, Loadercallbacks).forceLoad();
                 }
 
@@ -111,7 +109,6 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
 
         return rootView;
     }
-
 
     @Override
     public android.support.v4.content.Loader<UserData> onCreateLoader(int id, Bundle args) {
@@ -145,19 +142,19 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
             repoList = data.getRepoList();
             Collections.sort(repoList, new StarsSorter());
             Collections.reverse(repoList);
-            Log.d(TAG, "onLoadFinished: repo list after sorting size : "+repoList.size());
-            if (repoList.size()>0)Log.d(TAG, "onLoadFinished: repo list first element starts : "+repoList.get(0).getStars());
             adapter = new ReposAdapter(repoList,getActivity());
             repoListRv.setAdapter(adapter);
-            Log.d(TAG, "onLoadFinished: adapter size : "+adapter.getItemCount());
             ratingBar.setRating(data.getRating());
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("email",data.getEmail());
+            contentValues.put("username",searchedUser);
+            contentValues.put("rating",data.getRating());
+            getActivity().getContentResolver().insert(HistoryContract.CONTENT_URI,contentValues);
         } else {
             Log.d(TAG, "onLoadFinished: invalid username");
-            tvBio.setText("Invalid Username , Please enter correct username");
+            linearCardView.setVisibility(View.INVISIBLE);
             Toast.makeText(getActivity(),"Invalid Username",Toast.LENGTH_SHORT).show();
         }
-        progressDialog.dismiss();
-        data = null;
     }
 
     @Override

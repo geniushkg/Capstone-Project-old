@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/fab_margin"
         android:textSize="@dimen/feedbackLabelFontSize"
-        android:textAlignment="center"/>
+        />
 
     <Button
         android:id="@+id/btnSendFeedBack"

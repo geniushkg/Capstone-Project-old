@@ -49,24 +49,21 @@ public class GithubDataLoader extends AsyncTaskLoader<UserData> {
     public UserData loadInBackground() {
         Log.d(TAG, "loadInBackground: started");
         data = new UserData();
-        data = null;
         //fetch personal details
         Call<User> githubUser = service.getUserPersonalData(username);
         User fetchedUser = new User();
         try {
             fetchedUser = githubUser.execute().body();
-            if (fetchedUser == null)
-            {
+            if (fetchedUser == null) {
                 isValid = false;
-            }else {
+            } else {
                 isValid = true;
+                Log.d(TAG, "loadInBackground: fetched user : " + fetchedUser.getEmail());
             }
-            Log.d(TAG, "loadInBackground: fetched user : " + fetchedUser.getEmail());
         } catch (IOException exp) {
             Log.d(TAG, "loadInBackground: " + exp.getMessage());
             Toast.makeText(mContext, "Invalid user : " + exp.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
         if (isValid) {
 
 
@@ -150,7 +147,7 @@ public class GithubDataLoader extends AsyncTaskLoader<UserData> {
                 Log.d(TAG, "loadInBackground: rating is :" + rating);
 
             }
-        }else {
+        } else {
             data.setValid(false);
             Log.d(TAG, "loadInBackground: null user");
         }
@@ -173,7 +170,7 @@ public class GithubDataLoader extends AsyncTaskLoader<UserData> {
     protected void onReset() {
         super.onReset();
         onStopLoading();
-        if (data!=null){
+        if (data != null) {
             data = null;
         }
     }

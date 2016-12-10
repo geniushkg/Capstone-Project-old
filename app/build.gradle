@@ -13,7 +13,7 @@ android {
     buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.hardikgoswami.githubmetrics"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -56,6 +56,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.github.provigen:ProviGen-lib:2.0.1'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

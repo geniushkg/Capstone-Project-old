@@ -26,4 +26,7 @@
     <dimen name="twentydp">20dp</dimen>
     <dimen name="rvSearchFragReposHeight">280dp</dimen>
     <dimen name="contributionLabelFontSize">16sp</dimen>
+    <dimen name="tvHistoryRow">170dp</dimen>
+    <dimen name="historyLabelFontSize">14sp</dimen>
+    <dimen name="rating_bar_history_height">26dp</dimen>
 </resources>

@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
+    android:background="@drawable/nav_background"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:background="@drawable/nav_background"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
     >
 
     <ImageView
@@ -13,7 +14,8 @@
         android:layout_width="@dimen/profileImageWidth"
         android:layout_height="@dimen/profileImageWidth"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@android:drawable/sym_def_app_icon"
+        />
 
     <TextView
         android:layout_width="match_parent"

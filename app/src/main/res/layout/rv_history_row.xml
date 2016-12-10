@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="@dimen/tvHistoryRow"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNameHistoryRow"
+        android:textSize="@dimen/historyLabelFontSize"
+        android:layout_marginTop="@dimen/fab_margin"/>
+    <TextView
+        android:layout_width="@dimen/tvHistoryRow"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEmailHistoryRow"
+        android:hint="@string/hint_email"
+        android:layout_below="@+id/tvNameHistoryRow"
+        android:textSize="@dimen/historyLabelFontSize"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/cv_margin"/>
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBarHistoryRow"
+        android:layout_toEndOf="@+id/tvNameHistoryRow"
+        android:layout_margin="@dimen/fab_margin"
+        android:numStars="5"
+        android:stepSize="1"
+        style="?attr/ratingBarStyleSmall"
+        />
+
+</RelativeLayout>
