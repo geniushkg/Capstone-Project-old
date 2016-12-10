@@ -5,6 +5,7 @@ package com.hardikgoswami.githubmetrics.network;
  */
 
 public class User {
+    private int id;
     private String location;
     private String email;
     private String bio;
@@ -14,12 +15,21 @@ public class User {
     public User() {
     }
 
-    public User(String location, String email, String bio, int followers, String avatar_url) {
+    public User(int id, String location, String email, String bio, int followers, String avatar_url) {
+        this.id = id;
         this.location = location;
         this.email = email;
         this.bio = bio;
         this.followers = followers;
         this.avatar_url = avatar_url;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLocation() {

@@ -24,119 +24,126 @@
             android:layout_toRightOf="@+id/etGithubUser"
             android:text="@string/search" />
     </RelativeLayout>
-        <LinearLayout
+
+    <LinearLayout
+        android:id="@+id/llCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RLSearch"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewUserDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@id/RLSearch">
+            android:layout_margin="@dimen/cv_margin"
+            android:elevation="@dimen/cardview_default_elevation">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardViewUserDetail"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/cv_margin"
-                android:elevation="@dimen/cardview_default_elevation">
+                android:layout_marginBottom="@dimen/cv_margin">
 
-                <RelativeLayout
+                <ImageView
+                    android:id="@+id/ivAvatarCvUserDetail"
+                    android:layout_width="@dimen/cvUserImageWidth"
+                    android:layout_height="@dimen/cvUserImageWidth" />
+
+                <TextView
+                    android:id="@+id/tvLocationCvUserDetail"
+                    android:layout_width="@dimen/cvUserImageWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivAvatarCvUserDetail"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:hint="@string/hint_location"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tvBioCvUserDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/cvUserBioHeight"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
+                    android:hint="@string/hint_bio" />
+
+                <TextView
+                    android:id="@+id/tvEmailCvUserDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvBioCvUserDetail"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
+                    android:hint="@string/hint_email" />
+
+                <TextView
+                    android:id="@+id/tvRatingLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/cv_margin">
+                    android:layout_below="@+id/tvEmailCvUserDetail"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
+                    android:text="@string/rating_label" />
 
-                    <ImageView
-                        android:id="@+id/ivAvatarCvUserDetail"
-                        android:layout_width="@dimen/cvUserImageWidth"
-                        android:layout_height="@dimen/cvUserImageWidth" />
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvEmailCvUserDetail"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_toRightOf="@+id/tvRatingLabel"
+                    android:numStars="5"
+                    android:stepSize="1" />
 
-                    <TextView
-                        android:id="@+id/tvLocationCvUserDetail"
-                        android:layout_width="@dimen/cvUserImageWidth"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ivAvatarCvUserDetail"
-                        android:layout_marginTop="@dimen/fab_margin"
-                        android:hint="@string/hint_location"
-                        android:textAlignment="center" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/tvBioCvUserDetail"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/cvUserBioHeight"
-                        android:layout_marginLeft="@dimen/fab_margin"
-                        android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
-                        android:hint="@string/hint_bio" />
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cv_margin"
+            android:elevation="@dimen/cardview_default_elevation">
 
-                    <TextView
-                        android:id="@+id/tvEmailCvUserDetail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvBioCvUserDetail"
-                        android:layout_marginLeft="@dimen/fab_margin"
-                        android:layout_marginTop="@dimen/fab_margin"
-                        android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
-                        android:hint="@string/hint_email" />
-
-                    <TextView
-                        android:id="@+id/tvRatingLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvEmailCvUserDetail"
-                        android:layout_marginLeft="@dimen/fab_margin"
-                        android:layout_marginTop="@dimen/fab_margin"
-                        android:layout_toRightOf="@+id/ivAvatarCvUserDetail"
-                        android:text="@string/rating_label"/>
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvEmailCvUserDetail"
-                        android:layout_marginLeft="@dimen/fab_margin"
-                        android:layout_marginTop="@dimen/fab_margin"
-                        android:layout_toRightOf="@+id/tvRatingLabel"
-                        android:numStars="5"
-                        android:stepSize="1" />
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/cv_margin"
-                android:elevation="@dimen/cardview_default_elevation">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:layout_height="wrap_content">
+
                 <com.github.javierugarte.GitHubContributionsView
                     android:id="@+id/github_contributions_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:id="@+id/tvContributionGitDetail"
-                     android:layout_below="@+id/github_contributions_view"
-                     android:layout_margin="@dimen/cv_margin"
-                     android:hint="@string/hint_contributionThisYear"/>
+                <TextView
+                    android:id="@+id/tvFollowersGitDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/github_contributions_view"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/cv_margin"
+                    android:hint="@string/hint_numOfFollowers" />
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_below="@+id/github_contributions_view"
-                     android:layout_margin="@dimen/cv_margin"
-                     android:id="@+id/tvFollowersGitDetail"
-                     android:layout_toRightOf="@+id/tvContributionGitDetail"
-                     android:hint="@string/hint_numOfFollowers"
-                     />
-                  <android.support.v7.widget.RecyclerView
-                      android:layout_width="match_parent"
-                      android:layout_height="@dimen/rvSearchFragReposHeight"
-                      android:id="@+id/rvReposContribution"
-                      android:layout_margin="@dimen/cv_margin"
-                      android:layout_below="@id/tvFollowersGitDetail"/>
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvFollowersGitDetail"
+                    android:id="@+id/tvLabelPopularRepos"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/cv_margin"
+                    android:textSize="@dimen/contributionLabelFontSize"
+                    android:text="@string/labelPopularRepos"/>
 
-        </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvReposContribution"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/rvSearchFragReposHeight"
+                    android:layout_below="@id/tvLabelPopularRepos"
+                    android:layout_margin="@dimen/cv_margin" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 </RelativeLayout>

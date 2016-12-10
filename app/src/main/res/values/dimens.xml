@@ -25,4 +25,5 @@
     <dimen name="ninetydp">90dp</dimen>
     <dimen name="twentydp">20dp</dimen>
     <dimen name="rvSearchFragReposHeight">280dp</dimen>
+    <dimen name="contributionLabelFontSize">16sp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 package com.hardikgoswami.githubmetrics.network;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
 
 public class UserData {
 
+    private boolean isValid;
     private String location;
     private String bio;
     private String imageUrl;
@@ -18,12 +20,14 @@ public class UserData {
     private List<Contribution> repoList;
 
     public UserData() {
+        repoList = new ArrayList<Contribution>();
     }
 
-    public UserData(String location,
+    public UserData(boolean isValid, String location,
                     String bio, String imageUrl, String email, float rating,
-                    int numOfContributionAnnually, int followers,
-                    List<Contribution> repoList) {
+                    int numOfContributionAnnually, int followers, List<Contribution> repoList) {
+        repoList = new ArrayList<Contribution>();
+        this.isValid = isValid;
         this.location = location;
         this.bio = bio;
         this.imageUrl = imageUrl;
@@ -32,6 +36,14 @@ public class UserData {
         this.numOfContributionAnnually = numOfContributionAnnually;
         this.followers = followers;
         this.repoList = repoList;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
     }
 
     public String getLocation() {

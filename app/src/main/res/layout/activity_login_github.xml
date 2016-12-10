@@ -28,7 +28,8 @@
         android:text="@string/tagline"
         android:textAlignment="center"
         android:id="@+id/tvTagline"
-        android:layout_below="@+id/tvLabelAppName"/>
+        android:layout_below="@+id/tvLabelAppName"
+        android:gravity="center_horizontal"/>
     <Button
         android:layout_width="@dimen/loginbtn_width"
         android:layout_height="wrap_content"
