@@ -182,9 +182,4 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
         Log.d(TAG, "onLoaderReset: loader resent");
     }
 
-
-
-
-
-
 }

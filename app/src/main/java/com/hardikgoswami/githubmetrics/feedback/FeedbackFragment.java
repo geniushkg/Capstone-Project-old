@@ -8,7 +8,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.style.MetricAffectingSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +19,26 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.hardikgoswami.githubmetrics.BuildConfig;
 import com.hardikgoswami.githubmetrics.R;
-import com.mashape.unirest.http.Unirest;
+import com.hardikgoswami.githubmetrics.network.GithubService;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 import io.doorbell.android.Doorbell;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.hardikgoswami.githubmetrics.network.GithubDataLoader.TAG;
 
@@ -144,7 +160,24 @@ public class FeedbackFragment extends Fragment {
              * content-length:0 as header
              *
              */
+
             Log.d(TAG, "doInBackground: user token = "+oauthToken);
+
+            Retrofit retrofit = new Retrofit.Builder()
+                                    .baseUrl(BASE_URL)
+                                    .addConverterFactory(GsonConverterFactory.create())
+                                    .build();
+            GithubService service = retrofit.create(GithubService.class);
+            Call<String> user = service.getUser(oauthToken);
+            try {
+                if (user.execute().isSuccessful()){
+                    Log.d(TAG, "doInBackground: user authenticated succesfull :"+user.clone().execute().body());
+                }else{
+                    Log.d(TAG, "doInBackground: failed : "+user.clone().execute().errorBody().string());
+                }
+            }catch (IOException exp){
+                Log.d(TAG, "doInBackground: exception : "+exp.getMessage());
+            }
 
             return null;
         }

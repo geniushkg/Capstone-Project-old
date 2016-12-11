@@ -62,7 +62,6 @@ public class GithubDataLoader extends AsyncTaskLoader<UserData> {
             }
         } catch (IOException exp) {
             Log.d(TAG, "loadInBackground: " + exp.getMessage());
-            Toast.makeText(mContext, "Invalid user : " + exp.getMessage(), Toast.LENGTH_SHORT).show();
         }
         if (isValid) {
 
