@@ -27,7 +27,7 @@ public class HistoryLoader extends AsyncTaskLoader<List<UserHistory>> {
     @Override
     public List<UserHistory> loadInBackground() {
         if (userHistoryList.size()>0)userHistoryList.clear();
-        Cursor c = mContext.getContentResolver().query(HistoryContract.CONTENT_URI,null,null,null," '_id' DESC ");
+        Cursor c = mContext.getContentResolver().query(HistoryContract.CONTENT_URI,null,null,null," '_id' ASC ");
         if (c.getCount()>0){
             if (c.moveToFirst()){
              do{

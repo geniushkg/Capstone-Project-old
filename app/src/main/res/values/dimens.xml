@@ -21,6 +21,7 @@
     <dimen name="cvUserImageHeight">136dp</dimen>
     <dimen name="cv_margin">4dp</dimen>
     <dimen name="biolabelWidth">220dp</dimen>
+    <dimen name="newsletterMarginTop">25sp</dimen>
     <dimen name="tendp">10dp</dimen>
     <dimen name="seventydp">70dp</dimen>
     <dimen name="ninetydp">90dp</dimen>
@@ -31,4 +32,6 @@
     <dimen name="historyLabelFontSize">14sp</dimen>
     <dimen name="rating_bar_history_height">26dp</dimen>
     <dimen name="historyLabelFontSizeWidget">22sp</dimen>
+    <dimen name="tvHistoryRowEmail">250dp</dimen>
+    <dimen name="heightFeedbackText">180dp</dimen>
 </resources>

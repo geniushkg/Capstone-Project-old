@@ -34,4 +34,7 @@
     <string name="hint_numOfFollowers">Follwers :-</string>
     <string name="labelPopularRepos">Popular Repositories of this user.</string>
     <string name="refresh">Refresh</string>
+    <string name="followMe">you can email me Newsletter</string>
+    <string name="btnSurveyOptIn">Opt-In for beta features</string>
+    <string name="logout">Logout</string>
 </resources>

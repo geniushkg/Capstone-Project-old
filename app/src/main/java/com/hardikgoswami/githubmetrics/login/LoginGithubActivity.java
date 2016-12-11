@@ -38,6 +38,7 @@ public class LoginGithubActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(PREFERENCE,MODE_PRIVATE);
         boolean isLogged = sharedPreferences.getBoolean(LOGIN,false);
         if (oauthToken!=null){
+            Log.d(TAG, "onCreate: oauth token is :"+oauthToken);
             //user already logged in
             Intent intent = new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

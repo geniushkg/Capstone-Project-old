@@ -13,5 +13,10 @@
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_feedback_black_24dp"
             android:title="@string/feedback" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/logout"/>
     </group>
 </menu>

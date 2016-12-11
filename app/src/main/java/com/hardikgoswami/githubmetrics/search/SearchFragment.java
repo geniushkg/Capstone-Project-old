@@ -3,11 +3,15 @@ package com.hardikgoswami.githubmetrics.search;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -62,6 +66,7 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
     private RecyclerView repoListRv;
     private View linearCardView;
     private ReposAdapter adapter;
+    private boolean isOnline;
     private LoaderManager.LoaderCallbacks<UserData> Loadercallbacks;
 
     @Override
@@ -69,6 +74,7 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+        isOnline = true;
         linearCardView = rootView.findViewById(R.id.llCards);
         tvBio = (TextView) rootView.findViewById(R.id.tvBioCvUserDetail);
         tvEmail = (TextView) rootView.findViewById(R.id.tvEmailCvUserDetail);
@@ -84,6 +90,13 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
         repoListRv.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         Loadercallbacks = SearchFragment.this;
         ratingBar = (RatingBar)rootView.findViewById(R.id.ratingBar);
+        ConnectivityManager conMgr = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+        if (netInfo == null){
+            isOnline = false;
+        }else {
+            isOnline = true;
+        }
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +104,7 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
                 if (etGithubUsername.getText().toString() != null) {
                     searchedUser = etGithubUsername.getText().toString();
                 }
-                if (searchedUser != null) {
+                if (searchedUser != null && isOnline) {
                     Toast.makeText(getActivity(), "Please wait searching for : " + searchedUser, Toast.LENGTH_LONG).show();
                     gitView.loadUserName(searchedUser);
                     gitView.displayMonth(true);
@@ -102,6 +115,13 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
                     Bundle bundle = new Bundle();
                     bundle.putString(USERNAME, searchedUser);
                     getLoaderManager().restartLoader(0, bundle, Loadercallbacks).forceLoad();
+
+                }else {
+                    if (isOnline){
+                        Toast.makeText(getActivity(),"Username cannot be empty",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(),"Please check internet connection",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -161,5 +181,10 @@ public class SearchFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoaderReset(android.support.v4.content.Loader<UserData> loader) {
         Log.d(TAG, "onLoaderReset: loader resent");
     }
+
+
+
+
+
 
 }

@@ -1,7 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.hardikgoswami.githubmetrics.feedback.FeedbackFragment">
 
     <TextView
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_marginStart="@dimen/twentydp"
         android:layout_marginEnd="@dimen/twentydp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/heightFeedbackText"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/fab_margin"
         android:textSize="@dimen/feedbackLabelFontSize"
@@ -20,9 +21,21 @@
         android:layout_width="@dimen/loginbtn_width"
         android:layout_height="wrap_content"
         android:text="@string/btnFeedback"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:background="@color/colorAccent"
         android:textColor="@color/white"
         />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnSurveyOptIn"
+        android:layout_width="@dimen/loginbtn_width"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSurveyOptIn"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        />
+
+
+</LinearLayout>

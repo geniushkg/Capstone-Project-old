@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +43,7 @@ public class HomeActivity extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAnalytics mFirebaseAnalytics;
     boolean doubleBackToExitPressedOnce = false;
     private static final String TAG = "GithubMetrics";
     SharedPreferences sharedPreferences;
@@ -60,6 +62,7 @@ public class HomeActivity extends AppCompatActivity
         Log.d(TAG, "oauth token for github loged in user is :" + oauthToken);
 
         //firebase setup user login setup
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -76,8 +79,8 @@ public class HomeActivity extends AppCompatActivity
                     if (user.getEmail() != null) {
                         editor.putString(EMAIL, user.getEmail());
                     }
-                    if (user.getPhotoUrl()!=null){
-                        editor.putString(IMG_URL,user.getPhotoUrl().toString());
+                    if (user.getPhotoUrl() != null) {
+                        editor.putString(IMG_URL, user.getPhotoUrl().toString());
                     }
                     editor.commit();
                 } else {
@@ -120,26 +123,26 @@ public class HomeActivity extends AppCompatActivity
 
         //update navigation view as per user details
         View headerView = navigationView.getHeaderView(0);
-        if (headerView!=null){
-            TextView name = (TextView)headerView.findViewById(R.id.tvNavHeaderName);
-            String fetchedName =  sharedPreferences.getString(NAME,null);
-            if (fetchedName!= null) name.setText(fetchedName);
+        if (headerView != null) {
+            TextView name = (TextView) headerView.findViewById(R.id.tvNavHeaderName);
+            String fetchedName = sharedPreferences.getString(NAME, null);
+            if (fetchedName != null) name.setText(fetchedName);
 
-            TextView email = (TextView)headerView.findViewById(R.id.tvNavHeaderEmail);
-            String fetchedEmail = sharedPreferences.getString(EMAIL,null);
-            if (fetchedEmail!= null) email.setText(fetchedEmail);
+            TextView email = (TextView) headerView.findViewById(R.id.tvNavHeaderEmail);
+            String fetchedEmail = sharedPreferences.getString(EMAIL, null);
+            if (fetchedEmail != null) email.setText(fetchedEmail);
 
-            ImageView ivProfileImage =(ImageView) headerView.findViewById(R.id.imageViewNavigationProfile);
-            if (ivProfileImage!=null){
-                String profileUrl = sharedPreferences.getString(IMG_URL,null);
-                Log.d(TAG, "onCreate: profile image url : "+profileUrl);
+            ImageView ivProfileImage = (ImageView) headerView.findViewById(R.id.imageViewNavigationProfile);
+            if (ivProfileImage != null) {
+                String profileUrl = sharedPreferences.getString(IMG_URL, null);
+                Log.d(TAG, "onCreate: profile image url : " + profileUrl);
                 profileUrl = profileUrl + "&s=50";
-                if (profileUrl!=null) {
+                if (profileUrl != null) {
                     Picasso.with(this)
                             .load(profileUrl)
                             .into(ivProfileImage);
                 }
-            }else {
+            } else {
                 Log.d(TAG, "onCreate: profileview null");
             }
         }
@@ -200,11 +203,21 @@ public class HomeActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content_home, new HistoryFragment())
                         .commit();
+                Bundle params2 = new Bundle();
+                params2.putString(FirebaseAnalytics.Param.VALUE, "History Fragment");
+                mFirebaseAnalytics.logEvent("User navigation", params2);
                 break;
             case R.id.nav_feedback:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content_home, new FeedbackFragment())
                         .commit();
+                break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.clear();
+                edit.commit();
+                finish();
                 break;
             default:
                 Log.d(TAG, "onNavigationItemSelected: default case executed");

@@ -1,37 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/llWidget"
+    >
+    <TextView
+        android:id="@+id/tvLabelHistory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="10"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvLabelHistory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin_widget"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="@string/history"
-            android:textSize="@dimen/historyLabelFontSizeWidget" />
-
-        <Button
-            android:id="@+id/btnHistory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="5"
-            android:text="@string/refresh" />
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/rvSearchFragReposHeight"
-        android:id="@+id/rvHistoryWidget"/>
+        android:layout_margin="@dimen/fab_margin_widget"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="@string/history"
+        android:textSize="@dimen/historyLabelFontSizeWidget" />
+    <include layout="@layout/rv_history_row_widget"/>
 </LinearLayout>
