@@ -14,6 +14,9 @@ import com.hardikgoswami.githubmetrics.R;
 import com.hardikgoswami.githubmetrics.home.HomeActivity;
 import com.hardikgoswami.oauthLibGithub.GithubOauth;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class LoginGithubActivity extends AppCompatActivity {
 
     public static final String GIT_CLIENT = BuildConfig.GITHUB_CLIENT;
@@ -48,7 +51,9 @@ public class LoginGithubActivity extends AppCompatActivity {
             // user not logged in , do nothing
             Log.d(TAG, "onCreate: User not logged in");
         }
-
+        final ArrayList<String> scopeList = new ArrayList<>();
+        scopeList.add("user");
+        scopeList.add("public_repo");
         loginBtn =(Button)findViewById(R.id.btnLogin);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +66,7 @@ public class LoginGithubActivity extends AppCompatActivity {
                         .packageName("com.hardikgoswami.githubmetrics")
                         .nextActivity("com.hardikgoswami.githubmetrics.home.HomeActivity")
                         .debug(true)
+                        .withScopeList(scopeList)
                         .execute();
                 finish();
 

@@ -41,9 +41,7 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
 
-    configurations {
-        all*.exclude group: 'com.squareup.okhttp3', module: 'okhttp'
-    }
+
 }
 
 
@@ -55,7 +53,9 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.github.geniushkg:oauthLibGithub:1.0.1'
+    compile 'com.github.geniushkg:oauthLibGithub:1.0.2', {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
     compile 'com.android.support:design:23.4.0'
     compile 'com.google.firebase:firebase-auth:10.0.1'
     compile 'com.facebook.stetho:stetho:1.4.1'
@@ -68,6 +68,8 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.github.provigen:ProviGen-lib:2.0.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
     testCompile 'junit:junit:4.12'
+    compile files('libs/org.eclipse.egit.github.core-2.1.4.jar')
 }
 apply plugin: 'com.google.gms.google-services'

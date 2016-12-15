@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity
     SharedPreferences sharedPreferences;
     public static final String PREFERENCE = "github_prefs";
     private String oauthToken;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
@@ -83,9 +85,12 @@ public class HomeActivity extends AppCompatActivity
                         editor.putString(IMG_URL, user.getPhotoUrl().toString());
                     }
                     editor.commit();
+
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
+                    getAuthCredentials(oauthToken);
                 }
             }
         };
@@ -118,9 +123,17 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        updateNavigationView();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_home, new SearchFragment())
+                .commit();
+    }
+
+    private void updateNavigationView() {
         //update navigation view as per user details
         View headerView = navigationView.getHeaderView(0);
         if (headerView != null) {
@@ -146,10 +159,23 @@ public class HomeActivity extends AppCompatActivity
                 Log.d(TAG, "onCreate: profileview null");
             }
         }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content_home, new SearchFragment())
-                .commit();
+    }
+
+    private void getAuthCredentials(String oauthToken) {
+        AuthCredential credential = GithubAuthProvider.getCredential(oauthToken);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithCredential", task.getException());
+                        }
+                    }
+                });
     }
 
     @Override

@@ -37,4 +37,11 @@
     <string name="followMe">you can email me Newsletter</string>
     <string name="btnSurveyOptIn">Opt-In for beta features</string>
     <string name="logout">Logout</string>
+    <string name="thankyou">Hello User,I hope you found this app usefull,I invite you to share you precious feedback,queries, new feature request, etc.</string>
+    <string name="candidate_history_list">List of candidates searched</string>
+    <string name="logoOfApp">Logo for GithubMetrics</string>
+    <string name="userImage">Profile Image of searched user</string>
+    <string name="candidate_bio">Bio of user searched</string>
+    <string name="hint_email_content">email of user searched</string>
+    <string name="rating_label_content">Ratings for user searched.</string>
 </resources>

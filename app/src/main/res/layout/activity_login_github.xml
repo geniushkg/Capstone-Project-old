@@ -10,7 +10,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/marginLogoTop"
         android:src="@mipmap/ic_launcher"
-        android:id="@+id/ivLogo"/>
+        android:id="@+id/ivLogo"
+        android:contentDescription="@string/logoOfApp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +21,8 @@
         android:layout_below="@id/ivLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/marginLabelTop"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +31,8 @@
         android:textAlignment="center"
         android:id="@+id/tvTagline"
         android:layout_below="@+id/tvLabelAppName"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        />
     <Button
         android:layout_width="@dimen/loginbtn_width"
         android:layout_height="wrap_content"
@@ -39,6 +42,8 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:background="@color/colorPrimary"
-        android:id="@+id/btnLogin"/>
+        android:id="@+id/btnLogin"
+        android:contentDescription="@string/login"
+        android:focusable="true"/>
 
 </RelativeLayout>

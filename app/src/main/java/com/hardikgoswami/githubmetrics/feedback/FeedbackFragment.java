@@ -8,9 +8,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.text.style.MetricAffectingSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,28 +17,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.hardikgoswami.githubmetrics.BuildConfig;
 import com.hardikgoswami.githubmetrics.R;
-import com.hardikgoswami.githubmetrics.network.GithubService;
+import com.hardikgoswami.githubmetrics.util.StargazerService;
+
+import org.eclipse.egit.github.core.IRepositoryIdProvider;
+import org.eclipse.egit.github.core.client.GitHubClient;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
 import io.doorbell.android.Doorbell;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.hardikgoswami.githubmetrics.network.GithubDataLoader.TAG;
+import okhttp3.MediaType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,6 +40,9 @@ public class FeedbackFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static final String TAG = "GithubMetrics";
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
     public static final String BASE_URL = "https://api.github.com/";
     public static final String DOORBELL_KEY = BuildConfig.DOORBELL_KEY;
     public static final int DOORBELL_ID = BuildConfig.DOORBELL_ID;
@@ -154,30 +145,19 @@ public class FeedbackFragment extends Fragment {
             String oauthToken;
             oauthToken = params[0];
 
-            /***
-             * PUT /user/starred/:owner/:repo   - git api url
-             * ?access_token=oauthtoken as parameter
-             * content-length:0 as header
-             *
-             */
+            //OAuth2 token authentication
+            GitHubClient client = new GitHubClient();
+            client.setOAuth2Token(oauthToken);
 
-            Log.d(TAG, "doInBackground: user token = "+oauthToken);
+            StargazerService service = new StargazerService(client);
 
-            Retrofit retrofit = new Retrofit.Builder()
-                                    .baseUrl(BASE_URL)
-                                    .addConverterFactory(GsonConverterFactory.create())
-                                    .build();
-            GithubService service = retrofit.create(GithubService.class);
-            Call<String> user = service.getUser(oauthToken);
             try {
-                if (user.execute().isSuccessful()){
-                    Log.d(TAG, "doInBackground: user authenticated succesfull :"+user.clone().execute().body());
-                }else{
-                    Log.d(TAG, "doInBackground: failed : "+user.clone().execute().errorBody().string());
-                }
-            }catch (IOException exp){
-                Log.d(TAG, "doInBackground: exception : "+exp.getMessage());
+                service.star("geniushkg/capstone-project");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.d(TAG, "doInBackground: star repo : "+e.getMessage());
             }
+
 
             return null;
         }
